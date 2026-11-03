@@ -1,0 +1,145 @@
+{
+  "company": {
+    "name": "KKE Cleaning Services",
+    "email": "kennyloh999@gmail.com",
+    "phone": "+60 12 227 7323",
+    "phoneHref": "+60122277323",
+    "registration": "SA0616741-H",
+    "address": ["162, Lorong Haruan 1/9", "Taman Megah, 70300 Seremban", "Negeri Sembilan, Malaysia"]
+  },
+  "navigation": [
+    { "label": "Home", "href": "/" },
+    { "label": "About", "href": "/about/" },
+    { "label": "Services", "href": "/services/" },
+    { "label": "Work", "href": "/work/" },
+    { "label": "Contact", "href": "/contact/" }
+  ],
+  "metrics": [
+    { "value": "2007", "label": "Established" },
+    { "value": "18+", "label": "Years experience" },
+    { "value": "35", "label": "Cleaning personnel" },
+    { "value": "7", "label": "Industries served" }
+  ],
+  "clients": [
+    { "name": "AIA", "image": "/assets/images/logo-aia.png" },
+    { "name": "Kurnia", "image": "/assets/images/logo-kurnia.png" },
+    { "name": "Exis Tech", "image": "/assets/images/logo-existech.png" },
+    { "name": "MKE Metal", "kind": "mke" },
+    { "name": "Klinik Sinar", "image": "/assets/images/logo-klinik-sinar.png" },
+    { "name": "Multi-Realty", "kind": "multi" },
+    { "name": "Generali", "image": "/assets/images/logo-generali.png" }
+  ],
+  "services": [
+    {
+      "id": "office",
+      "number": "01",
+      "name": "Office cleaning",
+      "short": "OFFICE",
+      "type": "Commercial",
+      "title": "Office cleaning built around the working day.",
+      "description": "Workstations, meeting rooms, reception areas, washrooms, pantry and common spaces.",
+      "scope": ["Workstations and meeting rooms", "Reception and shared areas", "Washrooms and pantry", "Daily or scheduled maintenance"],
+      "image": "/assets/images/service-office.png"
+    },
+    {
+      "id": "factory",
+      "number": "02",
+      "name": "Factory cleaning",
+      "short": "FACTORY",
+      "type": "Industrial",
+      "title": "Factory cleaning that protects production flow.",
+      "description": "Production floors, warehouses, machinery surroundings, loading zones and embedded factory offices.",
+      "scope": ["Production and warehouse floors", "Machinery surroundings", "Loading and dispatch zones", "Embedded offices and washrooms"],
+      "image": "/assets/images/service-factory.png"
+    },
+    {
+      "id": "post-renovation",
+      "number": "03",
+      "name": "Post-renovation",
+      "short": "POST-RENO",
+      "type": "Handover",
+      "title": "Final detailing for a confident handover.",
+      "description": "Dust, cement and paint residue, glass cleaning, floor treatment and final detailing.",
+      "scope": ["Cement and paint residue", "Fine dust removal", "Glass and fixture detailing", "Floor treatment and handover clean"],
+      "image": "/assets/images/service-renovation.png"
+    },
+    {
+      "id": "deep",
+      "number": "04",
+      "name": "Deep cleaning",
+      "short": "DEEP CLEANING",
+      "type": "Restorative",
+      "title": "Focused cleaning for spaces that need a reset.",
+      "description": "High-touch areas, difficult surfaces, accumulated residue and detail-led restorative work.",
+      "scope": ["High-touch sanitisation", "Built-up dirt and residue", "Hard-to-reach surfaces", "One-off restorative cleaning"],
+      "image": "/assets/images/home-hero.png"
+    },
+    {
+      "id": "house",
+      "number": "05",
+      "name": "House cleaning",
+      "short": "HOUSE",
+      "type": "Residential",
+      "title": "Reliable care for lived-in spaces.",
+      "description": "Flexible one-off or recurring cleaning for houses, apartments and move-in preparation.",
+      "scope": ["Houses and apartments", "Move-in preparation", "Kitchen and bathroom detailing", "One-off or recurring visits"],
+      "image": "/assets/images/about-team.png"
+    }
+  ],
+  "industries": [
+    { "number": "01", "name": "Industrial & manufacturing", "copy": "Factories, production floors, warehouses and loading environments." },
+    { "number": "02", "name": "Corporate offices", "copy": "Workplaces, meeting areas, reception zones and shared facilities." },
+    { "number": "03", "name": "Healthcare & clinics", "copy": "Hygiene-led cleaning for patient-facing and clinical environments." },
+    { "number": "04", "name": "Property management", "copy": "Common areas, managed buildings and recurring site maintenance." },
+    { "number": "05", "name": "Government & institutional", "copy": "Reliable support for controlled, high-accountability environments." },
+    { "number": "06", "name": "Post-renovation", "copy": "Detailed cleaning for renovation completion and site handover." },
+    { "number": "07", "name": "Residential", "copy": "Houses, apartments, move-ins and scheduled home care." }
+  ],
+  "projects": [
+    {
+      "number": "01",
+      "tag": "Industrial",
+      "title": "Industrial facility",
+      "description": "Factory cleaning / production floors",
+      "image": "/assets/images/proof-after.png"
+    },
+    {
+      "number": "02",
+      "tag": "Office",
+      "title": "Corporate office",
+      "description": "Recurring office cleaning contract",
+      "image": "/assets/images/project-office.png"
+    },
+    {
+      "number": "03",
+      "tag": "Healthcare",
+      "title": "Healthcare site",
+      "description": "Hygiene-led clinic cleaning",
+      "image": "/assets/images/project-healthcare.png"
+    },
+    {
+      "number": "04",
+      "tag": "Post-reno",
+      "title": "Post-renovation",
+      "description": "Final handover and detailing",
+      "image": "/assets/images/project-renovation.png"
+    }
+  ],
+  "timeline": [
+    { "period": "2007", "title": "Vision Cleaning Services established", "copy": "Residential and office cleaning for local businesses and households." },
+    { "period": "2008 — 2015", "title": "Commercial + industrial expansion", "copy": "Factories, manufacturing facilities, offices and industrial contracts." },
+    { "period": "2016 — 2020", "title": "Specialized sectors", "copy": "Insurance, legal, healthcare, property, religious and government projects." },
+    { "period": "2021 — PRESENT", "title": "Transformation into KKE", "copy": "Stronger systems, workforce management, quality assurance and larger projects." }
+  ],
+  "values": [
+    { "label": "Mission", "copy": "Exceptional service, professional standards and long-term trust." },
+    { "label": "Vision", "copy": "A trusted Malaysian professional cleaning provider." },
+    { "label": "Core values", "copy": "Professionalism, reliability, quality, integrity and commitment." }
+  ],
+  "process": ["Site details", "Site review", "Scope + quote", "Service start"],
+  "faqs": [
+    { "q": "What site details should I prepare?", "a": "Share the property type, approximate size, location, preferred schedule, target date and any access or specialist requirements." },
+    { "q": "Can KKE handle recurring contracts?", "a": "Yes. KKE supports one-off work as well as daily, weekly, monthly and long-term site contracts." },
+    { "q": "Which industries does KKE serve?", "a": "KKE works across industrial, corporate, healthcare, property, institutional, post-renovation and residential environments." }
+  ]
+}
