@@ -1,10 +1,14 @@
-const data = await fetch('/assets/site.json').then((response) => {
+// Derive the site root from this module so root and project hosting both work.
+const siteRoot = new URL('../', import.meta.url);
+const siteUrl = (path) => new URL(path.replace(/^\//, ''), siteRoot).href;
+
+const data = await fetch(new URL('site.json', import.meta.url)).then((response) => {
   if (!response.ok) throw new Error('Could not load site data.');
   return response.json();
 });
 
 const app = document.querySelector('#app');
-const currentPath = window.location.pathname.replace(/index\.html$/, '') || '/';
+const currentPath = ('/' + window.location.pathname.slice(siteRoot.pathname.length)).replace(/index\.html$/, '') || '/';
 const page = currentPath.startsWith('/work')
   ? 'work'
   : currentPath.startsWith('/services')
@@ -338,6 +342,16 @@ function contactPage() {
 
 const renderers = { home: homePage, work: workPage, services: servicesPage, about: aboutPage, contact: contactPage };
 app.innerHTML = `${header()}${renderers[page]()}${footer()}${floatingWhatsapp()}`;
+
+// Keep internal navigation and image URLs inside the hosted project directory.
+app.querySelectorAll('[href^="/"], [src^="/"]').forEach((element) => {
+  for (const attribute of ['href', 'src']) {
+    const value = element.getAttribute(attribute);
+    if (value?.startsWith('/') && !value.startsWith('//')) {
+      element.setAttribute(attribute, siteUrl(value));
+    }
+  }
+});
 document.body.dataset.page = page;
 
 const menuButton = document.querySelector('.menu-toggle');
@@ -395,7 +409,7 @@ serviceBrowser?.querySelectorAll('[data-service-index]').forEach((tab) => {
       serviceBrowser.querySelector('[data-service-title]').textContent = service.title;
       serviceBrowser.querySelector('[data-service-copy]').textContent = service.description;
       const image = serviceBrowser.querySelector('[data-service-image]');
-      image.src = service.image;
+      image.src = siteUrl(service.image);
       image.alt = service.name;
       feature.classList.remove('is-changing');
     }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 150);

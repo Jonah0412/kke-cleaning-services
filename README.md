@@ -1,23 +1,31 @@
-# KKE Cleaning Services website
+# KKE Cleaning Services
 
-A responsive, multi-page implementation of the approved Figma designs using HTML, CSS, JavaScript, and JSON. No package installation is required.
+[**Open the live website →**](https://jonah0412.github.io/kke-cleaning-services/)
 
-## Run locally
+This repository contains the website source. The working website is published with GitHub Pages; the repository page displays these instructions and the source files.
 
-Open this folder in VS Code, open its terminal, and run:
+## Website pages
 
-```bash
-npm run dev
+- [Home](https://jonah0412.github.io/kke-cleaning-services/)
+- [About](https://jonah0412.github.io/kke-cleaning-services/about/)
+- [Services](https://jonah0412.github.io/kke-cleaning-services/services/)
+- [Work](https://jonah0412.github.io/kke-cleaning-services/work/)
+- [Contact](https://jonah0412.github.io/kke-cleaning-services/contact/)
+
+## Publishing
+
+GitHub Pages serves the static website from the root of the main branch. Changes to the HTML files and assets publish automatically after GitHub's Pages deployment completes.
+
+Shared content is in assets/site.json. Rendering and interactions are in assets/app.js, and the design styles are in assets/styles.css and assets/hero-v6.css. Keep matching files under public/assets in sync for the separate framework version.
+
+## Local preview
+
+With Node.js installed, run:
+
+```sh
+node server.js
 ```
 
-Then open [http://127.0.0.1:4173](http://127.0.0.1:4173).
+Then open http://127.0.0.1:4173/. No package installation is required for this static preview.
 
-## Pages
-
-- `/` — Home
-- `/work/` — Work
-- `/services/` — Services
-- `/about/` — About
-- `/contact/` — Contact and quotation form
-
-Shared content is stored in `assets/site.json`. Page rendering and interactions are in `assets/app.js`, and the responsive design system is in `assets/styles.css`.
+The optional framework development server uses npm ci followed by npm run dev.
