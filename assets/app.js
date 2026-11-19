@@ -1,3 +1,4 @@
+import './intro.js?v=20261119-6';
 // Derive the site root from this module so root and project hosting both work.
 const siteRoot = new URL('../', import.meta.url);
 const siteUrl = (path) => new URL(path.replace(/^\//, ''), siteRoot).href;
@@ -578,3 +579,6 @@ window.addEventListener('scroll', () => {
   const currentY = window.scrollY;
   headerElement.classList.toggle('is-condensed', currentY > 16);
 }, { passive: true });
+
+// Tell the intro / page curtain that the page is rendered.
+document.dispatchEvent(new Event('kke:ready'));
