@@ -1147,3 +1147,11 @@ body { overflow-x: hidden; }
 body[data-page="contact"] .floating-whatsapp { display: none; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .process-step p { margin: .6rem 0 0; font-size: .8rem; line-height: 1.5; color: #3a4640; }
+
+/* ---- Selected clients + contact hours ---- */
+.client-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.client-group { padding: 1.4rem; border: 1px solid var(--line); border-radius: 14px; background: #fff; }
+.client-group h3 { margin: 0 0 .8rem; font-size: .8rem; letter-spacing: .06em; text-transform: uppercase; color: var(--navy); }
+.client-group ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .45rem; }
+.client-group li { font-size: .85rem; line-height: 1.4; color: #2b3a33; }
+.contact-hours { margin: .8rem 0 0; font-size: .8rem; opacity: .85; }

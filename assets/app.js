@@ -93,7 +93,7 @@ function footer() {
       <div class="footer-meta container">
         <p>SEREMBAN — NEGERI SEMBILAN<br />MALAYSIA</p>
         <p><a href="mailto:${data.company.email}">${data.company.email}</a><br /><a href="tel:${data.company.phoneHref}">${data.company.phone}</a></p>
-        <p>©2026 KKE<br />${data.company.registration}</p>
+        <p>©2026 KKE<br />${data.company.registrationLabel}: ${data.company.registration}</p>
       </div>
       <div class="footer-wordmark" aria-hidden="true">KKE CLEANING SERVICES</div>
     </footer>`;
@@ -210,6 +210,10 @@ function workPage() {
         <div class="industry-grid">${data.industries.map((industry) => `
           <article class="industry-card reveal"><span>${industry.number}</span><h3>${industry.name}</h3><p>${industry.copy}</p></article>`).join('')}</div>
       </section>
+      <section class="client-list section container">
+        <div class="section-heading reveal"><p class="eyebrow">SELECTED CLIENTS</p><h2>Organisations that<br />trust KKE.</h2></div>
+        <div class="client-groups">${data.clientGroups.map((group) => `<article class="client-group reveal"><h3>${group.sector}</h3><ul>${group.names.map((name) => `<li>${name}</li>`).join('')}</ul></article>`).join('')}</div>
+      </section>
       <section class="work-grid section container">
         <div class="section-heading"><p class="eyebrow">PROJECT INDEX</p><h2>Work organized by environment.</h2></div>
         <div class="filters" role="group" aria-label="Filter projects">${filters.map((filter, index) => `<button class="filter ${index === 0 ? 'is-active' : ''}" data-filter="${filter.toLowerCase()}">${filter}</button>`).join('')}</div>
@@ -294,7 +298,7 @@ function contactPage() {
       ${pageIntro('REQUEST A QUOTATION', 'Tell us about the site.<br />We will shape the scope.', 'A guided quotation flow for corporate sites, factories, renovation handovers and homes.')}
       <section class="contact-layout container">
         <form class="quote-form reveal" data-quote-form novalidate>
-          <div class="form-heading"><p class="eyebrow">START HERE</p><h2>Request a site quotation</h2><p>Complete the three steps. KKE will review the details and contact you directly.</p><p class="required-note"><em class="req" aria-hidden="true">*</em> Required field</p></div>
+          <div class="form-heading"><p class="eyebrow">START HERE</p><h2>Request a site quotation</h2><p>Complete the three steps. KKE will review the details and contact you directly. Pricing depends on the size and scope of your site.</p><p class="required-note"><em class="req" aria-hidden="true">*</em> Required field</p></div>
           <ol class="form-steps"><li class="is-active" data-form-indicator="0"><b>1</b><span>Site</span></li><li data-form-indicator="1"><b>2</b><span>Schedule</span></li><li data-form-indicator="2"><b>3</b><span>Contact</span></li></ol>
           <div class="form-progress" aria-hidden="true"><span data-form-progress></span></div>
           <section class="form-panel" data-form-step="0">
@@ -326,7 +330,7 @@ function contactPage() {
           <div class="form-success" role="status" hidden><strong>Your quotation request is ready to send.</strong><p>Choose how to send it to KKE. Nothing is sent until you do.</p><div class="form-success__actions"><a class="button button--primary" data-send-whatsapp target="_blank" rel="noreferrer"><span>Send via WhatsApp</span></a><a class="button button--secondary" data-send-email><span>Send via email</span></a></div><pre class="form-summary" data-form-summary></pre></div>
         </form>
         <aside class="contact-aside">
-          <article class="contact-card contact-card--dark reveal"><p class="eyebrow">DIRECT CONTACT</p><h2>Prefer a quick conversation?</h2><a href="tel:${data.company.phoneHref}">${data.company.phone}</a><a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer">Chat on WhatsApp</a><a href="mailto:${data.company.email}">${data.company.email}</a></article>
+          <article class="contact-card contact-card--dark reveal"><p class="eyebrow">DIRECT CONTACT</p><h2>Prefer a quick conversation?</h2><a href="tel:${data.company.phoneHref}">${data.company.phone}</a><a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer">Chat on WhatsApp</a><a href="mailto:${data.company.email}">${data.company.email}</a><p class="contact-hours">${data.company.hours}</p></article>
           <article class="map-card reveal"><iframe class="map-embed" title="Map showing KKE Cleaning Services in Seremban" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(data.company.address.join(', '))}&output=embed"></iframe><p class="eyebrow">KKE OFFICE</p><h3>${data.company.address[0]}</h3><p>${data.company.address.slice(1).join('<br />')}</p><a href="https://maps.google.com/?q=${encodeURIComponent(data.company.address.join(', '))}" target="_blank" rel="noreferrer">Open in Google Maps ${arrow}</a></article>
           <article class="coverage-card reveal"><p class="eyebrow">SERVICE COVERAGE</p><h2>Negeri Sembilan +<br />surrounding areas.</h2><p>Corporate contracts, recurring maintenance and project cleaning.</p></article>
         </aside>
