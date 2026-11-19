@@ -1155,3 +1155,10 @@ body[data-page="contact"] .floating-whatsapp { display: none; }
 .client-group ul { margin: 0; padding: 0; list-style: none; display: grid; gap: .45rem; }
 .client-group li { font-size: .85rem; line-height: 1.4; color: #2b3a33; }
 .contact-hours { margin: .8rem 0 0; font-size: .8rem; opacity: .85; }
+
+/* ---- Stronger emphasis on form labels and key text ---- */
+.field > span { font-weight: 700; }
+.consent span { font-weight: 600; }
+.required-note { font-weight: 600; }
+.form-success strong { font-weight: 700; }
+.contact-card a, .footer-meta a { font-weight: 600; }

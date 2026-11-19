@@ -215,7 +215,7 @@ function workPage() {
         <div class="client-groups">${data.clientGroups.map((group) => `<article class="client-group reveal"><h3>${group.sector}</h3><ul>${group.names.map((name) => `<li>${name}</li>`).join('')}</ul></article>`).join('')}</div>
       </section>
       <section class="work-grid section container">
-        <div class="section-heading"><p class="eyebrow">PROJECT INDEX</p><h2>Work organized by environment.</h2></div>
+        <div class="section-heading"><p class="eyebrow">PROJECT INDEX</p><h2>Work organised by environment.</h2></div>
         <div class="filters" role="group" aria-label="Filter projects">${filters.map((filter, index) => `<button class="filter ${index === 0 ? 'is-active' : ''}" data-filter="${filter.toLowerCase()}">${filter}</button>`).join('')}</div>
         <div class="project-grid">${data.projects.map((project) => `
           <article class="project-card reveal" data-category="${project.tag.toLowerCase()}">
@@ -275,7 +275,7 @@ function aboutPage() {
       <section class="director section container reveal">
         <div class="director__portrait"><img src="/assets/images/director.svg" alt="Portrait illustration of Mr. Kenny Loh" /></div>
         <div class="director__copy"><p class="eyebrow">OPERATIONS LEADERSHIP</p><h2>Mr. Kenny Loh</h2><h3>Operations Director</h3><p>Operational planning, workforce coordination, quality assurance and client relationship management.</p></div>
-        <div class="director__stat"><span>ORGANIZATION</span><strong>A scalable team for projects of varying size.</strong><p>Cleaners, drivers, supervisors and admin support</p></div>
+        <div class="director__stat"><span>ORGANISATION</span><strong>A scalable team for projects of varying size.</strong><p>Cleaners, drivers, supervisors and admin support</p></div>
       </section>
       <section class="values section container">${data.values.map((value) => `<article class="value-card reveal"><p class="eyebrow">${value.label}</p><h3>${value.copy}</h3></article>`).join('')}</section>
       ${logoLoop()}
@@ -320,7 +320,7 @@ function contactPage() {
           </section>
           <section class="form-panel" data-form-step="2" hidden>
             <div class="form-grid">
-              ${field('Name / company', 'Contact person and organization', 'text', false, 'name')}
+              ${field('Name / company', 'Contact person and organisation', 'text', false, 'name')}
               ${field('Phone / email', 'Best contact channel', 'text', false, 'contact')}
             </div>
             <label class="consent"><input name="consent" type="checkbox" required aria-required="true" /><span>I agree to be contacted about this quotation request. <em class="req" aria-hidden="true">*</em></span><small class="field-error" role="alert" hidden></small></label>
