@@ -1,4 +1,4 @@
-import './intro.js?v=20261119-7';
+import './intro.js?v=20261119-8';
 // Derive the site root from this module so root and project hosting both work.
 const siteRoot = new URL('../', import.meta.url);
 const siteUrl = (path) => new URL(path.replace(/^\//, ''), siteRoot).href;

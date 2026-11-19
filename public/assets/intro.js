@@ -1,5 +1,5 @@
 // KKE intro + page-transition curtain.
-// - First visit in a browser session: a short minimalist intro (drifting dots, line-by-line headline, counter).
+// - First visit in a browser session: a short logo-reveal intro (wipe + shine, progress line, no text).
 // - Moving between pages: a curtain slides up, the next page loads, the curtain slides away.
 // - Reduced-motion visitors get neither. Everything has a failsafe so the page can never stay covered.
 const reduce = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
@@ -67,21 +67,11 @@ if (mode === 'intro') {
   intro.setAttribute('role', 'status');
   intro.setAttribute('aria-label', 'Loading KKE Cleaning Services');
   intro.innerHTML = `
-    <div class="kke-intro__top"><img src="${logoUrl}" alt="KKE Cleaning Services" /><button class="kke-intro__skip" type="button">Skip</button></div>
-    <div class="kke-intro__dots" aria-hidden="true"></div>
+    <div class="kke-intro__top"><span></span><button class="kke-intro__skip" type="button">Skip</button></div>
+    <div class="kke-intro__stage"><div class="kke-intro__logo"><img src="${logoUrl}" alt="KKE Cleaning Services" /><span class="kke-intro__shine" aria-hidden="true"></span></div></div>
     <div class="kke-intro__foot" aria-hidden="true"><span class="kke-intro__bar"><i></i></span></div>`;
   document.documentElement.append(intro);
   root.classList.add('kke-lock');
-
-  const field = intro.querySelector('.kke-intro__dots');
-  const sizes = [6, 8, 10, 12, 14, 18, 22, 28, 34];
-  for (let i = 0; i < 56; i += 1) {
-    const dot = document.createElement('i');
-    const size = sizes[Math.floor(Math.pow(Math.random(), 1.6) * sizes.length)];
-    dot.style.cssText = `--x:${(Math.random() * 100).toFixed(1)}%;--y:${(Math.random() * 100).toFixed(1)}%;--s:${size}px;--d:${(0.15 + Math.random() * 0.9).toFixed(2)}s;--f:${(2.6 + Math.random() * 2.4).toFixed(2)}s;--fx:${(Math.random() * 26 - 13).toFixed(1)}px;--fy:${(Math.random() * 26 - 13).toFixed(1)}px;`;
-    if (i % 5 === 0) dot.className = 'is-green';
-    field.append(dot);
-  }
 
   const barEl = intro.querySelector('.kke-intro__bar i');
   const MIN = 2300;
