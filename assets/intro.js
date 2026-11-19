@@ -69,17 +69,13 @@ if (mode === 'intro') {
   intro.innerHTML = `
     <div class="kke-intro__top"><img src="${logoUrl}" alt="KKE Cleaning Services" /><button class="kke-intro__skip" type="button">Skip</button></div>
     <div class="kke-intro__dots" aria-hidden="true"></div>
-    <div class="kke-intro__copy">
-      <p class="kke-intro__label">Seremban · Since 2007</p>
-      <h2 class="kke-intro__title" aria-hidden="true"><span class="ln"><span>Professional</span></span><span class="ln"><span>cleaning.</span></span><span class="ln"><span>Done properly.</span></span></h2>
-    </div>
-    <div class="kke-intro__foot" aria-hidden="true"><span class="kke-intro__count">0</span><span class="kke-intro__bar"><i></i></span></div>`;
+    <div class="kke-intro__foot" aria-hidden="true"><span class="kke-intro__bar"><i></i></span></div>`;
   document.documentElement.append(intro);
   root.classList.add('kke-lock');
 
   const field = intro.querySelector('.kke-intro__dots');
   const sizes = [6, 8, 10, 12, 14, 18, 22, 28, 34];
-  for (let i = 0; i < 34; i += 1) {
+  for (let i = 0; i < 56; i += 1) {
     const dot = document.createElement('i');
     const size = sizes[Math.floor(Math.pow(Math.random(), 1.6) * sizes.length)];
     dot.style.cssText = `--x:${(Math.random() * 100).toFixed(1)}%;--y:${(Math.random() * 100).toFixed(1)}%;--s:${size}px;--d:${(0.15 + Math.random() * 0.9).toFixed(2)}s;--f:${(2.6 + Math.random() * 2.4).toFixed(2)}s;--fx:${(Math.random() * 26 - 13).toFixed(1)}px;--fy:${(Math.random() * 26 - 13).toFixed(1)}px;`;
@@ -87,7 +83,6 @@ if (mode === 'intro') {
     field.append(dot);
   }
 
-  const countEl = intro.querySelector('.kke-intro__count');
   const barEl = intro.querySelector('.kke-intro__bar i');
   const MIN = 2300;
   const start = performance.now();
@@ -98,7 +93,6 @@ if (mode === 'intro') {
     if (closed) return;
     closed = true;
     cancelAnimationFrame(raf);
-    countEl.textContent = '100';
     barEl.style.transform = 'scaleX(1)';
     intro.classList.add('is-leaving');
     setTimeout(() => { intro.remove(); root.classList.remove('kke-lock'); }, 950);
@@ -109,7 +103,6 @@ if (mode === 'intro') {
   const tick = (now) => {
     const p = Math.min((now - start) / MIN, 1);
     const eased = 1 - Math.pow(1 - p, 3);
-    countEl.textContent = String(Math.round(eased * 100));
     barEl.style.transform = `scaleX(${eased})`;
     if (p < 1) raf = requestAnimationFrame(tick); else tryClose();
   };
