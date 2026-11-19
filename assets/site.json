@@ -137,6 +137,12 @@
     { "label": "Core values", "copy": "Professionalism, reliability, quality, integrity and commitment." }
   ],
   "process": ["Site details", "Site review", "Scope + quote", "Service start"],
+  "processDetail": [
+    "Tell KKE the property type, size, location and preferred schedule.",
+    "KKE reviews the details you sent.",
+    "You receive a scope and quotation for your site.",
+    "Cleaning begins on the agreed schedule."
+  ],
   "faqs": [
     { "q": "What site details should I prepare?", "a": "Share the property type, approximate size, location, preferred schedule, target date and any access or specialist requirements." },
     { "q": "Can KKE handle recurring contracts?", "a": "Yes. KKE supports one-off work as well as daily, weekly, monthly and long-term site contracts." },

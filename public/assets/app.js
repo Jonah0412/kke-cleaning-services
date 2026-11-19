@@ -111,7 +111,7 @@ function metrics(custom = data.metrics) {
     const numericValue = Number.parseInt(item.value, 10);
     const suffix = String(item.value).includes('+') ? '+' : '';
     const valueMarkup = numericValue < 1000
-      ? `<strong data-count-target="${numericValue}" data-count-suffix="${suffix}">0${suffix}</strong>`
+      ? `<strong data-count-target="${numericValue}" data-count-suffix="${suffix}" aria-hidden="true">0${suffix}</strong><span class="sr-only">${item.value}</span>`
       : `<strong>${item.value}</strong>`;
     return `<div class="metric reveal">${valueMarkup}<span>${item.label}</span></div>`;
   }).join('')}</div>`;
@@ -151,6 +151,7 @@ function homePage() {
             </div>
             <article class="video-hero__stat">
               <div><strong>18+</strong><span>Years of reliable operations</span></div>
+              <a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer"><span aria-hidden="true">↗</span>WhatsApp</a>
             </article>
             <a class="video-hero__corner" href="/contact/" aria-label="Request a quotation">
               <span class="video-hero__mask video-hero__mask--top" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56 56V0C56 30.9279 30.9279 56 0 56H56Z" fill="currentColor"/></svg></span>
@@ -235,7 +236,7 @@ function servicesPage() {
         <div class="service-stack" data-scroll-stack>${data.services.map((service, index) => `
           <article class="service-card reveal" id="service-${service.id}" style="--stack-index:${index};--stack-offset:${index * 10}px">
             <div class="service-card__top"><span>${service.number}</span><p class="eyebrow">${service.type}</p></div>
-            <div class="service-card__copy"><h2>${service.name}</h2><p>${service.description}</p><ul class="service-scope">${service.scope.map((item) => `<li>${item}</li>`).join('')}</ul>${button('Request scope', '/contact/', 'secondary')}</div>
+            <div class="service-card__copy"><h2>${service.name}</h2><p>${service.description}</p><ul class="service-scope">${service.scope.map((item) => `<li>${item}</li>`).join('')}</ul>${button('Request a quote', '/contact/', 'secondary')}</div>
             <img src="${service.image}" alt="${service.name}" loading="lazy" />
           </article>`).join('')}</div>
       </section>
@@ -245,7 +246,7 @@ function servicesPage() {
       </section>
       <section class="process section container">
         <p class="eyebrow">HOW IT WORKS</p>
-        <div class="process-grid">${data.process.map((step, index) => `<div class="process-step reveal"><span>0${index + 1}</span><h3>${step}</h3></div>`).join('')}</div>
+        <div class="process-grid">${data.process.map((step, index) => `<div class="process-step reveal"><span>0${index + 1}</span><h3>${step}</h3><p>${(data.processDetail || [])[index] || ''}</p></div>`).join('')}</div>
         <div class="process-cta reveal"><div><p class="eyebrow">NEED HELP CHOOSING?</p><h2>Not sure which service fits?</h2><p>Send the site details and KKE will guide the scope.</p></div>${button('Start a quote')}</div>
       </section>
     </main>`;
@@ -325,7 +326,7 @@ function contactPage() {
           <div class="form-success" role="status" hidden><strong>Your quotation request is ready to send.</strong><p>Choose how to send it to KKE. Nothing is sent until you do.</p><div class="form-success__actions"><a class="button button--primary" data-send-whatsapp target="_blank" rel="noreferrer"><span>Send via WhatsApp</span></a><a class="button button--secondary" data-send-email><span>Send via email</span></a></div><pre class="form-summary" data-form-summary></pre></div>
         </form>
         <aside class="contact-aside">
-          <article class="contact-card contact-card--dark reveal"><p class="eyebrow">DIRECT CONTACT</p><h2>Prefer a quick conversation?</h2><a href="tel:${data.company.phoneHref}">${data.company.phone}</a><a href="mailto:${data.company.email}">${data.company.email}</a></article>
+          <article class="contact-card contact-card--dark reveal"><p class="eyebrow">DIRECT CONTACT</p><h2>Prefer a quick conversation?</h2><a href="tel:${data.company.phoneHref}">${data.company.phone}</a><a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer">Chat on WhatsApp</a><a href="mailto:${data.company.email}">${data.company.email}</a></article>
           <article class="map-card reveal"><iframe class="map-embed" title="Map showing KKE Cleaning Services in Seremban" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(data.company.address.join(', '))}&output=embed"></iframe><p class="eyebrow">KKE OFFICE</p><h3>${data.company.address[0]}</h3><p>${data.company.address.slice(1).join('<br />')}</p><a href="https://maps.google.com/?q=${encodeURIComponent(data.company.address.join(', '))}" target="_blank" rel="noreferrer">Open in Google Maps ${arrow}</a></article>
           <article class="coverage-card reveal"><p class="eyebrow">SERVICE COVERAGE</p><h2>Negeri Sembilan +<br />surrounding areas.</h2><p>Corporate contracts, recurring maintenance and project cleaning.</p></article>
         </aside>
