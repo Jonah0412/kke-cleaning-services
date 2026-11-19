@@ -16,9 +16,9 @@
   ],
   "metrics": [
     { "value": "2007", "label": "Established" },
-    { "value": "18+", "label": "Years experience" },
     { "value": "35", "label": "Cleaning personnel" },
-    { "value": "7", "label": "Industries served" }
+    { "value": "7", "label": "Industries served" },
+    { "value": "5", "label": "Cleaning services" }
   ],
   "clients": [
     { "name": "AIA", "image": "/assets/images/logo-aia.png" },
@@ -56,7 +56,7 @@
       "id": "post-renovation",
       "number": "03",
       "name": "Post-renovation",
-      "short": "POST-RENO",
+      "short": "POST-RENOVATION",
       "type": "Handover",
       "title": "Final detailing for a confident handover.",
       "description": "Dust, cement and paint residue, glass cleaning, floor treatment and final detailing.",
@@ -119,7 +119,7 @@
     },
     {
       "number": "04",
-      "tag": "Post-reno",
+      "tag": "Post-renovation",
       "title": "Post-renovation",
       "description": "Final handover and detailing",
       "image": "/assets/images/project-renovation.png"

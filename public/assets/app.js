@@ -69,7 +69,7 @@ function logoLoop() {
     <section class="logo-loop section" aria-label="Selected KKE clients">
       <p class="eyebrow logo-loop__label">TRUSTED ACROSS WORKING ENVIRONMENTS</p>
       <div class="logo-loop__viewport">
-        <div class="logo-loop__track">${sequence}${sequence}</div>
+        <div class="logo-loop__track">${sequence}<span class="logo-loop__copy" aria-hidden="true">${sequence}</span></div>
       </div>
     </section>`;
 }
@@ -88,8 +88,6 @@ function footer() {
         <nav class="footer-links" aria-label="Footer navigation">${links}</nav>
         <div class="footer-links">
           <a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer">WhatsApp</a>
-          <a href="mailto:${data.company.email}">Email</a>
-          <a href="tel:${data.company.phoneHref}">Call</a>
         </div>
       </div>
       <div class="footer-meta container">
@@ -153,7 +151,6 @@ function homePage() {
             </div>
             <article class="video-hero__stat">
               <div><strong>18+</strong><span>Years of reliable operations</span></div>
-              <a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer"><span aria-hidden="true">↗</span>WhatsApp</a>
             </article>
             <a class="video-hero__corner" href="/contact/" aria-label="Request a quotation">
               <span class="video-hero__mask video-hero__mask--top" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56 56V0C56 30.9279 30.9279 56 0 56H56Z" fill="currentColor"/></svg></span>
@@ -185,7 +182,7 @@ function homePage() {
             </div>
             <img data-service-image src="${data.services[1].image}" alt="Factory cleaning" />
           </article>
-          <article class="mini-card"><p class="eyebrow">WORKFORCE</p><h3>Scalable teams for complex sites.</h3><p>Up to 35 personnel with site supervision and operational support.</p></article>
+          <article class="mini-card"><p class="eyebrow">WORKFORCE</p><h3>Scalable teams for complex sites.</h3><p>Site supervision and operational support for projects of every size.</p></article>
           <article class="mini-card"><p class="eyebrow">QUALITY PROOF</p><h3>Before / after transformation.</h3><div class="mini-proof"><img src="/assets/images/office-before-generated.png" alt="Office before cleaning"><img src="/assets/images/project-office.png" alt="Office after cleaning"></div></article>
         </div>
       </section>
@@ -198,7 +195,7 @@ function homePage() {
 }
 
 function workPage() {
-  const filters = ['All', 'Industrial', 'Office', 'Healthcare', 'Post-reno'];
+  const filters = ['All', 'Industrial', 'Office', 'Healthcare', 'Post-renovation'];
   return `
     <main>
       ${pageIntro('SELECTED WORK / PROOF', 'Proof that scales<br />with the site.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
@@ -251,14 +248,13 @@ function servicesPage() {
         <div class="process-grid">${data.process.map((step, index) => `<div class="process-step reveal"><span>0${index + 1}</span><h3>${step}</h3></div>`).join('')}</div>
         <div class="process-cta reveal"><div><p class="eyebrow">NEED HELP CHOOSING?</p><h2>Not sure which service fits?</h2><p>Send the site details and KKE will guide the scope.</p></div>${button('Start a quote')}</div>
       </section>
-      ${logoLoop()}
     </main>`;
 }
 
 function aboutPage() {
   const aboutMetrics = [
-    { value: '2007', label: 'Founded' }, { value: '18+', label: 'Years experience' },
-    { value: '35', label: 'Cleaning personnel' }, { value: '5', label: 'Operational drivers' }
+    { value: '18+', label: 'Years experience' }, { value: '35', label: 'Cleaning personnel' },
+    { value: '5', label: 'Operational drivers' }, { value: '7', label: 'Industries served' }
   ];
   return `
     <main>
@@ -274,7 +270,7 @@ function aboutPage() {
       <section class="director section container reveal">
         <div class="director__portrait"><img src="/assets/images/director.svg" alt="Portrait illustration of Mr. Kenny Loh" /></div>
         <div class="director__copy"><p class="eyebrow">OPERATIONS LEADERSHIP</p><h2>Mr. Kenny Loh</h2><h3>Operations Director</h3><p>Operational planning, workforce coordination, quality assurance and client relationship management.</p></div>
-        <div class="director__stat"><span>ORGANIZATION</span><strong>A scalable team for projects of varying size.</strong><p>35 personnel / 5 drivers / supervisors / admin support</p></div>
+        <div class="director__stat"><span>ORGANIZATION</span><strong>A scalable team for projects of varying size.</strong><p>Cleaners, drivers, supervisors and admin support</p></div>
       </section>
       <section class="values section container">${data.values.map((value) => `<article class="value-card reveal"><p class="eyebrow">${value.label}</p><h3>${value.copy}</h3></article>`).join('')}</section>
       ${logoLoop()}
@@ -283,10 +279,12 @@ function aboutPage() {
 
 function field(label, placeholder, type = 'text', full = false, name = '', required = true) {
   const fieldName = name || label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-  const requiredAttribute = required ? 'required' : '';
-  if (type === 'textarea') return `<label class="field ${full ? 'field--full' : ''}"><span>${label}</span><textarea name="${fieldName}" placeholder="${placeholder}" rows="4" ${requiredAttribute}></textarea></label>`;
-  if (type === 'select') return `<label class="field ${full ? 'field--full' : ''}"><span>${label}</span><select name="${fieldName}" ${requiredAttribute}><option value="">${placeholder}</option>${data.services.map((service) => `<option value="${service.id}">${service.name}</option>`).join('')}</select></label>`;
-  return `<label class="field ${full ? 'field--full' : ''}"><span>${label}</span><input name="${fieldName}" type="${type}" placeholder="${placeholder}" ${requiredAttribute} /></label>`;
+  const requiredAttribute = required ? 'required aria-required="true"' : '';
+  const caption = `<span>${label}${required ? ' <em class="req" aria-hidden="true">*</em>' : ' <small class="optional">(optional)</small>'}</span>`;
+  const error = '<small class="field-error" role="alert" hidden></small>';
+  if (type === 'textarea') return `<label class="field ${full ? 'field--full' : ''}">${caption}<textarea name="${fieldName}" placeholder="${placeholder}" rows="4" ${requiredAttribute}></textarea>${error}</label>`;
+  if (type === 'select') return `<label class="field ${full ? 'field--full' : ''}">${caption}<select name="${fieldName}" ${requiredAttribute}><option value="">${placeholder}</option>${data.services.map((service) => `<option value="${service.id}">${service.name}</option>`).join('')}</select>${error}</label>`;
+  return `<label class="field ${full ? 'field--full' : ''}">${caption}<input name="${fieldName}" type="${type}" placeholder="${placeholder}" ${requiredAttribute} />${error}</label>`;
 }
 
 function contactPage() {
@@ -294,8 +292,8 @@ function contactPage() {
     <main>
       ${pageIntro('REQUEST A QUOTATION', 'Tell us about the site.<br />We will shape the scope.', 'A guided quotation flow for corporate sites, factories, renovation handovers and homes.')}
       <section class="contact-layout container">
-        <form class="quote-form reveal" data-quote-form>
-          <div class="form-heading"><p class="eyebrow">START HERE</p><h2>Request a site quotation</h2><p>Complete the three steps. KKE will review the details and contact you directly.</p></div>
+        <form class="quote-form reveal" data-quote-form novalidate>
+          <div class="form-heading"><p class="eyebrow">START HERE</p><h2>Request a site quotation</h2><p>Complete the three steps. KKE will review the details and contact you directly.</p><p class="required-note"><em class="req" aria-hidden="true">*</em> Required field</p></div>
           <ol class="form-steps"><li class="is-active" data-form-indicator="0"><b>1</b><span>Site</span></li><li data-form-indicator="1"><b>2</b><span>Schedule</span></li><li data-form-indicator="2"><b>3</b><span>Contact</span></li></ol>
           <div class="form-progress" aria-hidden="true"><span data-form-progress></span></div>
           <section class="form-panel" data-form-step="0">
@@ -320,11 +318,11 @@ function contactPage() {
               ${field('Name / company', 'Contact person and organization', 'text', false, 'name')}
               ${field('Phone / email', 'Best contact channel', 'text', false, 'contact')}
             </div>
-            <label class="consent"><input name="consent" type="checkbox" required /><span>I agree to be contacted about this quotation request.</span></label>
-            <div class="form-actions"><button class="button button--secondary" type="button" data-form-back><span>Back</span></button><button class="button button--primary form-submit" type="submit"><span>Send quotation request</span>${arrow}</button></div>
+            <label class="consent"><input name="consent" type="checkbox" required aria-required="true" /><span>I agree to be contacted about this quotation request. <em class="req" aria-hidden="true">*</em></span><small class="field-error" role="alert" hidden></small></label>
+            <div class="form-actions"><button class="button button--secondary" type="button" data-form-back><span>Back</span></button><button class="button button--primary form-submit" type="submit"><span>Prepare my quotation request</span>${arrow}</button></div>
             <p class="form-note">No payment or account required.</p>
           </section>
-          <div class="form-success" role="status" hidden><strong>Thank you — your request is ready.</strong><p>This demo keeps the details in your browser. Connect the form to your preferred email or CRM before publishing.</p></div>
+          <div class="form-success" role="status" hidden><strong>Your quotation request is ready to send.</strong><p>Choose how to send it to KKE. Nothing is sent until you do.</p><div class="form-success__actions"><a class="button button--primary" data-send-whatsapp target="_blank" rel="noreferrer"><span>Send via WhatsApp</span></a><a class="button button--secondary" data-send-email><span>Send via email</span></a></div><pre class="form-summary" data-form-summary></pre></div>
         </form>
         <aside class="contact-aside">
           <article class="contact-card contact-card--dark reveal"><p class="eyebrow">DIRECT CONTACT</p><h2>Prefer a quick conversation?</h2><a href="tel:${data.company.phoneHref}">${data.company.phone}</a><a href="mailto:${data.company.email}">${data.company.email}</a></article>
@@ -336,7 +334,6 @@ function contactPage() {
         <div class="section-heading"><p class="eyebrow">QUOTATION FAQ</p><h2>Common quotation questions.</h2></div>
         <div class="faq-list">${data.faqs.map((item) => `<details class="reveal"><summary>${item.q}<span>+</span></summary><p>${item.a}</p></details>`).join('')}</div>
       </section>
-      ${logoLoop()}
     </main>`;
 }
 
@@ -460,14 +457,49 @@ if (quoteForm) {
     progress.style.width = `${((currentStep + 1) / panels.length) * 100}%`;
   };
 
+  const messages = {
+    service: 'Please choose a service.',
+    'site-type': 'Please enter the property or site type.',
+    location: 'Please enter the location or area.',
+    schedule: 'Please tell us the preferred schedule.',
+    name: 'Please enter your name or company.',
+    contact: 'Please enter a phone number or email.',
+    consent: 'Please tick the box so KKE can contact you.'
+  };
+  const errorBox = (field) => field.closest('label')?.querySelector('.field-error');
+  const clearError = (field) => {
+    const box = errorBox(field);
+    if (box) { box.hidden = true; box.textContent = ''; }
+    field.removeAttribute('aria-invalid');
+    field.closest('.field')?.classList.remove('has-error');
+  };
+  const showError = (field, text) => {
+    const box = errorBox(field);
+    if (box) { box.textContent = text; box.hidden = false; }
+    field.setAttribute('aria-invalid', 'true');
+    field.closest('.field')?.classList.add('has-error');
+  };
+  const contactLooksValid = (value) => /^\S+@\S+\.\S+$/.test(value.trim()) || value.replace(/\D/g, '').length >= 8;
+  quoteForm.querySelectorAll('input, select, textarea').forEach((field) => {
+    field.addEventListener('input', () => clearError(field));
+    field.addEventListener('change', () => clearError(field));
+  });
+
   const stepIsValid = () => {
     const fields = [...panels[currentStep].querySelectorAll('input, select, textarea')];
-    const invalidField = fields.find((field) => !field.checkValidity());
-    if (invalidField) {
-      invalidField.reportValidity();
-      invalidField.focus();
-      return false;
-    }
+    let firstInvalid = null;
+    fields.forEach((field) => {
+      clearError(field);
+      const empty = field.type === 'checkbox' ? !field.checked : !field.value.trim();
+      let text = '';
+      if (field.required && empty) text = messages[field.name] || 'This field is required.';
+      else if (field.name === 'contact' && !contactLooksValid(field.value)) text = 'Enter a valid email address or phone number.';
+      if (text) {
+        showError(field, text);
+        firstInvalid = firstInvalid || field;
+      }
+    });
+    if (firstInvalid) { firstInvalid.focus(); return false; }
     return true;
   };
 
@@ -478,10 +510,28 @@ if (quoteForm) {
   quoteForm.addEventListener('submit', (event) => {
     event.preventDefault();
     if (!stepIsValid()) return;
+    const values = Object.fromEntries(new FormData(quoteForm).entries());
+    const serviceName = data.services.find((service) => service.id === values.service)?.name || values.service;
+    const lines = [
+      'Quotation request for KKE Cleaning Services',
+      `Service: ${serviceName}`,
+      `Site type: ${values['site-type']}`,
+      values['site-size'] ? `Site size / rooms: ${values['site-size']}` : '',
+      `Location: ${values.location}`,
+      `Preferred schedule: ${values.schedule}`,
+      values['start-date'] ? `Target start date: ${values['start-date']}` : '',
+      values.notes ? `Notes: ${values.notes}` : '',
+      `Name / company: ${values.name}`,
+      `Phone / email: ${values.contact}`
+    ].filter(Boolean);
+    const message = lines.join('\n');
     panels.forEach((panel) => { panel.hidden = true; });
     quoteForm.querySelector('.form-steps').hidden = true;
     quoteForm.querySelector('.form-progress').hidden = true;
     const success = quoteForm.querySelector('.form-success');
+    success.querySelector('[data-send-whatsapp]').href = `https://wa.me/${data.company.phoneHref.replace('+', '')}?text=${encodeURIComponent(message)}`;
+    success.querySelector('[data-send-email]').href = `mailto:${data.company.email}?subject=${encodeURIComponent('Quotation request')}&body=${encodeURIComponent(message)}`;
+    success.querySelector('[data-form-summary]').textContent = message;
     success.hidden = false;
     success.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   });
