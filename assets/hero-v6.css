@@ -214,7 +214,7 @@
 .video-hero__corner:hover .video-hero__corner-icon { background: rgba(30, 50, 90, .1); transform: rotate(45deg); }
 .video-hero__corner-copy { display: flex; flex-direction: column; gap: .25rem; }
 .video-hero__corner-copy strong { font-family: "Helvetica Regular", Helvetica, Arial, sans-serif; font-size: 1.22rem; font-weight: 400; }
-.video-hero__corner-copy small { display: flex; align-items: center; gap: .35rem; color: rgba(30, 50, 90, .58); font-size: 0.875rem; }
+.video-hero__corner-copy small { display: flex; align-items: center; gap: .35rem; color: #1e325a; font-size: 0.875rem; font-weight: 700; }
 
 body[data-page="home"] .metrics-section { margin-top: 2.25rem; }
 body[data-page="home"] .floating-whatsapp { display: none; }
