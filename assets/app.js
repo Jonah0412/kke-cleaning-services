@@ -124,6 +124,7 @@ function comparison({ before, after, beforeLabel = 'BEFORE', afterLabel = 'AFTER
       <div class="comparison__after"><img src="${before}" alt="${beforeLabel.toLowerCase()} cleaning view" /></div>
       <span class="comparison__label comparison__label--before">${beforeLabel}</span>
       <span class="comparison__label comparison__label--after">${afterLabel}</span>
+      <span class="comparison__note">Illustration, not a real KKE job</span>
       <div class="comparison__line" aria-hidden="true"><span>↔</span></div>
       <input class="comparison__range" type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after" />
     </div>`;
@@ -200,7 +201,7 @@ function workPage() {
       ${pageIntro('SELECTED WORK / PROOF', 'Factory, office, clinic and<br />renovation cleaning projects.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
       <section class="container reveal">
         ${comparison({ before: '/assets/images/factory-before-generated.jpg', after: '/assets/images/factory.jpg', beforeLabel: 'BEFORE / ACTIVE SITE', afterLabel: 'AFTER / SERVICE COMPLETE', className: 'comparison--hero' })}
-        <div class="proof-caption"><h3>Industrial facility cleaning</h3><p>Production floor / Negeri Sembilan · Recurring service contract</p></div>
+        <div class="proof-caption"><h3>Industrial facility cleaning</h3><p>Illustrative before and after. Not a photograph of a specific KKE job.</p></div>
       </section>
       <section class="industries section container">
         <div class="section-heading reveal"><p class="eyebrow">INDUSTRIES / 01—07</p><h2>Seven industries<br />KKE cleans for.</h2></div>
