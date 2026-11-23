@@ -81,7 +81,7 @@ function footer() {
     <footer class="site-footer">
       <div class="footer-grid container">
         <div class="footer-intro">
-          <h2>Ready when your site is.</h2>
+          <h2>Get a quotation for your site.</h2>
           <p>Cleaning support for offices, factories, renovation sites and homes.</p>
           ${button('Request a quote', '/contact/', 'outline-light')}
         </div>
@@ -147,11 +147,10 @@ function homePage() {
             <div class="video-hero__copy">
               <div class="video-hero__badge"><span aria-hidden="true"></span>Professional cleaning in Seremban</div>
               <h1>Professional cleaning.<br />Done properly.</h1>
-              <p>Trusted cleaning teams for offices, factories, renovation sites and homes—delivering spotless, hygienic spaces on every visit.</p>
+              <p>Cleaning for offices, factories, renovation sites and homes in Seremban and across Negeri Sembilan. Since 2007, with a team of up to 35 cleaners.</p>
             </div>
             <article class="video-hero__stat">
-              <div><strong>18+</strong><span>Years of reliable operations</span></div>
-              <a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer"><span aria-hidden="true">↗</span>WhatsApp</a>
+              <div><strong>2007</strong><span>Established in Seremban</span></div>
             </article>
             <a class="video-hero__corner" href="/contact/" aria-label="Request a quotation">
               <span class="video-hero__mask video-hero__mask--top" aria-hidden="true"><svg width="100%" height="100%" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M56 56V0C56 30.9279 30.9279 56 0 56H56Z" fill="currentColor"/></svg></span>
@@ -166,7 +165,7 @@ function homePage() {
       <section class="services-preview section container">
         <div class="section-heading reveal">
           <p class="eyebrow">SERVICES / 01—05</p>
-          <h2>Cleaning systems for<br />spaces that cannot slow down.</h2>
+          <h2>Five cleaning services for<br />offices, factories and homes.</h2>
         </div>
         <div class="service-browser reveal" data-service-browser>
           <div class="service-browser__tabs">
@@ -183,14 +182,13 @@ function homePage() {
             </div>
             <img data-service-image src="${data.services[1].image}" alt="Factory cleaning" />
           </article>
-          <article class="mini-card"><p class="eyebrow">WORKFORCE</p><h3>Scalable teams for complex sites.</h3><p>Site supervision and operational support for projects of every size.</p></article>
-          <article class="mini-card"><p class="eyebrow">QUALITY PROOF</p><h3>Before / after transformation.</h3><div class="mini-proof"><img src="/assets/images/office-before-generated.jpg" alt="Office before cleaning"><img src="/assets/images/project-office.jpg" alt="Office after cleaning"></div></article>
+          <article class="mini-card"><p class="eyebrow">WORKFORCE</p><h3>Up to 35 cleaners, with site supervision.</h3><p>Site supervision and operational support for projects of every size.</p></article>
         </div>
       </section>
       ${logoLoop()}
       <section class="proof-banner section container reveal">
         ${comparison({ before: '/assets/images/office-before-generated.jpg', after: '/assets/images/project-office.jpg', className: 'comparison--banner' })}
-        <div class="proof-banner__content"><h2>From occupied to ready.</h2><p>See KKE’s cleaning proof, then request a site-specific quotation.</p>${button('View work', '/work/')}</div>
+        <div class="proof-banner__content"><h2>Before and after.</h2><p>Drag to compare, then ask for a quotation for your site.</p>${button('View work', '/work/')}</div>
       </section>
     </main>`;
 }
@@ -199,23 +197,22 @@ function workPage() {
   const filters = ['All', 'Industrial', 'Office', 'Healthcare', 'Post-renovation'];
   return `
     <main id="main" tabindex="-1">
-      ${pageIntro('SELECTED WORK / PROOF', 'Proof that scales<br />with the site.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
+      ${pageIntro('SELECTED WORK / PROOF', 'Factory, office, clinic and<br />renovation cleaning projects.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
       <section class="container reveal">
         ${comparison({ before: '/assets/images/factory-before-generated.jpg', after: '/assets/images/factory.jpg', beforeLabel: 'BEFORE / ACTIVE SITE', afterLabel: 'AFTER / SERVICE COMPLETE', className: 'comparison--hero' })}
         <div class="proof-caption"><h3>Industrial facility cleaning</h3><p>Production floor / Negeri Sembilan · Recurring service contract</p></div>
       </section>
-      ${logoLoop()}
       <section class="industries section container">
-        <div class="section-heading reveal"><p class="eyebrow">INDUSTRIES / 01—07</p><h2>Built for the environments<br />that keep Malaysia moving.</h2></div>
+        <div class="section-heading reveal"><p class="eyebrow">INDUSTRIES / 01—07</p><h2>Seven industries<br />KKE cleans for.</h2></div>
         <div class="industry-grid">${data.industries.map((industry) => `
           <article class="industry-card reveal"><span>${industry.number}</span><h3>${industry.name}</h3><p>${industry.copy}</p></article>`).join('')}</div>
       </section>
       <section class="client-list section container">
-        <div class="section-heading reveal"><p class="eyebrow">SELECTED CLIENTS</p><h2>Organisations that<br />trust KKE.</h2></div>
+        <div class="section-heading reveal"><p class="eyebrow">SELECTED CLIENTS</p><h2>Selected clients.</h2></div>
         <div class="client-groups">${data.clientGroups.map((group) => `<article class="client-group reveal"><h3>${group.sector}</h3><ul>${group.names.map((name) => `<li>${name}</li>`).join('')}</ul></article>`).join('')}</div>
       </section>
       <section class="work-grid section container">
-        <div class="section-heading"><p class="eyebrow">PROJECT INDEX</p><h2>Work organised by environment.</h2></div>
+        <div class="section-heading"><p class="eyebrow">PROJECT INDEX</p><h2>Browse projects by environment.</h2></div>
         <div class="filters" role="group" aria-label="Filter projects">${filters.map((filter, index) => `<button class="filter ${index === 0 ? 'is-active' : ''}" data-filter="${filter.toLowerCase()}">${filter}</button>`).join('')}</div>
         <div class="project-grid">${data.projects.map((project) => `
           <article class="project-card reveal" data-category="${project.tag.toLowerCase()}">
@@ -230,7 +227,7 @@ function workPage() {
 function servicesPage() {
   return `
     <main id="main" tabindex="-1">
-      ${pageIntro('SERVICE SYSTEMS / 01—05', 'The right cleaning system<br />for every environment.', 'From daily maintenance to specialist handovers, every scope is shaped around the way your site operates.')}
+      ${pageIntro('SERVICE SYSTEMS / 01—05', 'Office, factory, renovation,<br />deep and house cleaning.', 'From daily maintenance to specialist handovers, every scope is shaped around the way your site operates.')}
       <section class="service-index container">
         <div class="service-index__nav reveal">
           <p class="eyebrow">SERVICE INDEX</p>
@@ -240,12 +237,12 @@ function servicesPage() {
         <div class="service-stack" data-scroll-stack>${data.services.map((service, index) => `
           <article class="service-card reveal" id="service-${service.id}" style="--stack-index:${index};--stack-offset:${index * 10}px">
             <div class="service-card__top"><span>${service.number}</span><p class="eyebrow">${service.type}</p></div>
-            <div class="service-card__copy"><h2>${service.name}</h2><p>${service.description}</p><ul class="service-scope">${service.scope.map((item) => `<li>${item}</li>`).join('')}</ul>${button('Request a quote', '/contact/', 'secondary')}</div>
+            <div class="service-card__copy"><h2>${service.name}</h2><p>${service.description}</p><ul class="service-scope">${service.scope.map((item) => `<li>${item}</li>`).join('')}</ul>${button('Request ' + service.name.toLowerCase() + ' quote', '/contact/', 'secondary')}</div>
             <img src="${service.image}" alt="${service.name}" loading="lazy" />
           </article>`).join('')}</div>
       </section>
       <section class="service-proof section container">
-        <div class="section-heading"><p class="eyebrow">HANDOVER PROOF</p><h2>Drag to compare the finish.</h2></div>
+        <div class="section-heading"><p class="eyebrow">HANDOVER PROOF</p><h2>Post-renovation cleaning: before and after.</h2></div>
         ${comparison({ before: '/assets/images/reno-before-generated.jpg', after: '/assets/images/project-renovation.jpg', beforeLabel: 'BEFORE / RENOVATION RESIDUE', afterLabel: 'AFTER / READY FOR HANDOVER', className: 'comparison--wide' })}
       </section>
       <section class="process section container">
@@ -258,7 +255,7 @@ function servicesPage() {
 
 function aboutPage() {
   const aboutMetrics = [
-    { value: '18+', label: 'Years experience' }, { value: '35', label: 'Cleaning personnel' },
+    { value: '2007', label: 'Established' }, { value: '35', label: 'Cleaning personnel' },
     { value: '5', label: 'Operational drivers' }, { value: '7', label: 'Industries served' }
   ];
   return `
@@ -269,7 +266,7 @@ function aboutPage() {
       </section>
       <section class="container metrics-section">${metrics(aboutMetrics)}</section>
       <section class="timeline-section section container" id="operation">
-        <div class="section-heading"><p class="eyebrow">OUR JOURNEY</p><h2>Growth without losing<br />the detail.</h2></div>
+        <div class="section-heading"><p class="eyebrow">OUR JOURNEY</p><h2>From Vision Cleaning Services<br />to KKE.</h2></div>
         <div class="timeline">${data.timeline.map((item) => `<article class="timeline-item reveal"><span>${item.period}</span><div><h3>${item.title}</h3><p>${item.copy}</p></div></article>`).join('')}</div>
       </section>
       <section class="director section container reveal">
@@ -278,7 +275,6 @@ function aboutPage() {
         <div class="director__stat"><span>ORGANISATION</span><strong>A scalable team for projects of varying size.</strong><p>Cleaners, drivers, supervisors and admin support</p></div>
       </section>
       <section class="values section container">${data.values.map((value) => `<article class="value-card reveal"><p class="eyebrow">${value.label}</p><h3>${value.copy}</h3></article>`).join('')}</section>
-      ${logoLoop()}
     </main>`;
 }
 
@@ -295,7 +291,7 @@ function field(label, placeholder, type = 'text', full = false, name = '', requi
 function contactPage() {
   return `
     <main id="main" tabindex="-1">
-      ${pageIntro('REQUEST A QUOTATION', 'Tell us about the site.<br />We will shape the scope.', 'A guided quotation flow for corporate sites, factories, renovation handovers and homes.')}
+      ${pageIntro('REQUEST A QUOTATION', 'Request a cleaning quotation<br />in three steps.', 'A guided quotation flow for corporate sites, factories, renovation handovers and homes.')}
       <section class="contact-layout container">
         <form class="quote-form reveal" data-quote-form novalidate>
           <div class="form-heading"><p class="eyebrow">START HERE</p><h2>Request a site quotation</h2><p>Complete the three steps. KKE will review the details and contact you directly. Pricing depends on the size and scope of your site.</p><p class="required-note"><em class="req" aria-hidden="true">*</em> Required field</p></div>
