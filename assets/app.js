@@ -201,7 +201,7 @@ function workPage() {
       ${pageIntro('SELECTED WORK / PROOF', 'Factory, office, clinic and<br />renovation cleaning projects.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
       <section class="container reveal">
         ${comparison({ before: '/assets/images/factory-before-generated.jpg', after: '/assets/images/factory.jpg', beforeLabel: 'BEFORE / ACTIVE SITE', afterLabel: 'AFTER / SERVICE COMPLETE', className: 'comparison--hero' })}
-        <div class="proof-caption"><h3>Industrial facility cleaning</h3><p>Illustrative before and after. Not a photograph of a specific KKE job.</p></div>
+        <div class="proof-caption"><h3 role="heading" aria-level="2">Industrial facility cleaning</h3><p>Illustrative before and after. Not a photograph of a specific KKE job.</p></div>
       </section>
       <section class="industries section container">
         <div class="section-heading reveal"><p class="eyebrow">INDUSTRIES / 01—07</p><h2>Seven industries<br />KKE cleans for.</h2></div>
