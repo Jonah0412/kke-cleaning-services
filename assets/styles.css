@@ -1184,3 +1184,11 @@ body[data-page="contact"] .floating-whatsapp { display: none; }
 .skip-link:focus { transform: translateY(0); }
 main:focus { outline: none; }
 .industry-card:first-child > span { color: var(--green); }
+
+/* Home: the single workforce card fills the row beside the service tabs */
+@media (min-width: 1051px) {
+  .service-browser > .mini-card { grid-column: 2 / -1; min-height: 0; }
+}
+@media (max-width: 760px) {
+  .service-browser > .mini-card { min-height: 0; }
+}
