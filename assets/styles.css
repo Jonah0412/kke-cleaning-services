@@ -1162,3 +1162,10 @@ body[data-page="contact"] .floating-whatsapp { display: none; }
 .required-note { font-weight: 600; }
 .form-success strong { font-weight: 700; }
 .contact-card a, .footer-meta a { font-weight: 600; }
+
+/* Touch targets: at least 44px tall for small text links, chips and the menu button */
+.footer-links a, .footer-meta a, .contact-card a { display: inline-flex; align-items: center; min-height: 44px; }
+.footer-links { gap: 0; }
+.filter, .menu-toggle { min-height: 44px; }
+.footer-meta p a { padding-block: .5rem; }
+.map-card > a { display: inline-flex; align-items: center; min-height: 44px; }
