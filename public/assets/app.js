@@ -331,7 +331,7 @@ function contactPage() {
         </form>
         <aside class="contact-aside">
           <article class="contact-card contact-card--dark reveal"><p class="eyebrow">DIRECT CONTACT</p><h2>Prefer a quick conversation?</h2><a href="tel:${data.company.phoneHref}">${data.company.phone}</a><a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer">Chat on WhatsApp</a><a href="mailto:${data.company.email}">${data.company.email}</a><p class="contact-hours">${data.company.hours}</p></article>
-          <article class="map-card reveal"><iframe class="map-embed" title="Map showing KKE Cleaning Services in Seremban" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(data.company.address.join(', '))}&output=embed"></iframe><p class="eyebrow">KKE OFFICE</p><h3>${data.company.address[0]}</h3><p>${data.company.address.slice(1).join('<br />')}</p><a href="https://maps.google.com/?q=${encodeURIComponent(data.company.address.join(', '))}" target="_blank" rel="noreferrer">Open in Google Maps ${arrow}</a></article>
+          <article class="map-card reveal"><iframe class="map-embed" title="Map showing KKE Cleaning Services in Seremban" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(data.company.address.join(', '))}&output=embed"></iframe><p class="eyebrow">KKE OFFICE</p><h3>${data.company.address[0]}</h3><p>${data.company.address.slice(1).join('<br />')}</p><div class="distance-tool"><button type="button" class="distance-btn" data-locate>Use my location</button><p class="distance-result" data-distance-result role="status" aria-live="polite">Optional. Your location stays in your browser and is not sent anywhere.</p></div><a href="https://maps.google.com/?q=${encodeURIComponent(data.company.address.join(', '))}" target="_blank" rel="noreferrer">Open in Google Maps ${arrow}</a></article>
           <article class="coverage-card reveal"><p class="eyebrow">SERVICE COVERAGE</p><h2>Negeri Sembilan +<br />surrounding areas.</h2><p>Corporate contracts, recurring maintenance and project cleaning.</p></article>
         </aside>
       </section>
@@ -578,3 +578,48 @@ window.addEventListener('scroll', () => {
   const currentY = window.scrollY;
   headerElement.classList.toggle('is-condensed', currentY > 16);
 }, { passive: true });
+
+// Distance to the KKE office: only runs when the visitor taps the button, and the position never leaves the browser.
+const locateButton = document.querySelector('[data-locate]');
+if (locateButton) {
+  const result = document.querySelector('[data-distance-result]');
+  const office = data.company.coordinates;
+  const toRad = (degrees) => (degrees * Math.PI) / 180;
+  const distanceKm = (from, to) => {
+    const dLat = toRad(to.lat - from.lat);
+    const dLng = toRad(to.lng - from.lng);
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(from.lat)) * Math.cos(toRad(to.lat)) * Math.sin(dLng / 2) ** 2;
+    return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  };
+  const showMessage = (text) => { result.textContent = text; };
+  locateButton.addEventListener('click', () => {
+    if (!('geolocation' in navigator)) {
+      showMessage('Your browser cannot share its location. Use Open in Google Maps instead.');
+      return;
+    }
+    locateButton.disabled = true;
+    showMessage('Finding your location…');
+    navigator.geolocation.getCurrentPosition((position) => {
+      const here = { lat: position.coords.latitude, lng: position.coords.longitude };
+      const km = distanceKm(here, office);
+      const rounded = km < 10 ? km.toFixed(1) : String(Math.round(km));
+      result.textContent = `You are about ${rounded} km from our Seremban office (straight-line distance). `;
+      const link = document.createElement('a');
+      link.href = `https://www.google.com/maps/dir/?api=1&origin=${here.lat.toFixed(5)},${here.lng.toFixed(5)}&destination=${office.lat},${office.lng}`;
+      link.target = '_blank';
+      link.rel = 'noreferrer';
+      link.textContent = 'Get directions';
+      result.append(link);
+      locateButton.disabled = false;
+      locateButton.textContent = 'Update my location';
+    }, (error) => {
+      const reasons = {
+        1: 'Location access was blocked. Allow it in your browser settings to see the distance.',
+        2: 'We could not work out your location. Please try again.',
+        3: 'Finding your location took too long. Please try again.'
+      };
+      showMessage(reasons[error.code] || reasons[2]);
+      locateButton.disabled = false;
+    }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
+  });
+}
