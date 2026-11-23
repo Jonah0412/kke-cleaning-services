@@ -1169,3 +1169,11 @@ body[data-page="contact"] .floating-whatsapp { display: none; }
 .filter, .menu-toggle { min-height: 44px; }
 .footer-meta p a { padding-block: .5rem; }
 .map-card > a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Distance to office */
+.distance-tool { margin: 1.25rem 0 .5rem; }
+.distance-btn { display: inline-flex; align-items: center; min-height: 44px; padding: .55rem 1.1rem; border: 1px solid var(--navy); border-radius: 999px; background: transparent; color: var(--navy); font-size: .7rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; cursor: pointer; }
+.distance-btn:hover:not(:disabled) { background: var(--navy); color: white; }
+.distance-btn:disabled { opacity: .6; cursor: progress; }
+.distance-result { margin: .7rem 0 0; }
+.distance-result a { color: var(--green-dark); font-weight: 600; }
