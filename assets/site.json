@@ -99,7 +99,7 @@
         "Washrooms and pantry",
         "Daily or scheduled maintenance"
       ],
-      "image": "/assets/images/service-office.png"
+      "image": "/assets/images/project-office.jpg"
     },
     {
       "id": "factory",
@@ -115,7 +115,7 @@
         "Loading and dispatch zones",
         "Embedded offices and washrooms"
       ],
-      "image": "/assets/images/service-factory.png"
+      "image": "/assets/images/factory.jpg"
     },
     {
       "id": "post-renovation",
@@ -131,7 +131,7 @@
         "Glass and fixture detailing",
         "Floor treatment and handover clean"
       ],
-      "image": "/assets/images/service-renovation.png"
+      "image": "/assets/images/project-renovation.jpg"
     },
     {
       "id": "deep",
@@ -147,7 +147,7 @@
         "Intensive floor treatment",
         "Washroom sanitisation"
       ],
-      "image": "/assets/images/service-office.png"
+      "image": "/assets/images/project-office.jpg"
     },
     {
       "id": "house",
@@ -163,7 +163,7 @@
         "Kitchen and bathroom detailing",
         "One-off or recurring visits"
       ],
-      "image": "/assets/images/about-team.png"
+      "image": "/assets/images/about-team.jpg"
     }
   ],
   "industries": [
@@ -209,28 +209,28 @@
       "tag": "Industrial",
       "title": "Industrial facility",
       "description": "Factory cleaning / production floors",
-      "image": "/assets/images/proof-after.png"
+      "image": "/assets/images/factory.jpg"
     },
     {
       "number": "02",
       "tag": "Office",
       "title": "Corporate office",
       "description": "Recurring office cleaning contract",
-      "image": "/assets/images/project-office.png"
+      "image": "/assets/images/project-office.jpg"
     },
     {
       "number": "03",
       "tag": "Healthcare",
       "title": "Healthcare site",
       "description": "Hygiene-led clinic cleaning",
-      "image": "/assets/images/project-healthcare.png"
+      "image": "/assets/images/about-team.jpg"
     },
     {
       "number": "04",
       "tag": "Post-renovation",
       "title": "Post-renovation",
       "description": "Final handover and detailing",
-      "image": "/assets/images/project-renovation.png"
+      "image": "/assets/images/project-renovation.jpg"
     }
   ],
   "timeline": [
