@@ -289,8 +289,7 @@ p { line-height: 1.55; }
 .faq summary span { color: var(--green-dark); font-size: 1.3rem; }
 .faq details p { max-width: 42rem; padding: 0 2rem 1.3rem 0; color: var(--ink); font-size: 0.875rem; }
 
-.site-footer { position: relative; min-height: 500px; margin-top: 6.5rem; padding-top: 3rem; overflow: hidden; color: #f6f5ec; background: var(--black); }
-.footer-accent { position: absolute; top: 0; left: 0; width: 210px; height: 2px; background: var(--green); }
+.site-footer { --wm-size: min(6.8rem, calc((100vw - 3rem) / 13.6)); position: relative; min-height: 500px; margin-top: 6.5rem; padding-top: 3rem; padding-bottom: calc(var(--wm-size) * .72 + 1.25rem); overflow: hidden; color: #f6f5ec; background: var(--black); }
 .footer-grid { display: grid; grid-template-columns: 1fr 170px 190px; gap: 5rem; }
 .footer-intro h2 { margin-bottom: .45rem; font-size: 1.45rem; }
 .footer-intro p { margin-bottom: 1.5rem; color: #adb2ad; font-size: 0.75rem; }
@@ -298,7 +297,7 @@ p { line-height: 1.55; }
 .footer-links a:hover, .footer-meta a:hover { color: var(--green); }
 .footer-meta { display: grid; grid-template-columns: 1fr 220px 190px; gap: 2rem; margin-top: 4rem; padding: 2rem 0; border-bottom: 1px solid #333836; }
 .footer-meta p { margin: 0; font-size: 0.75rem; line-height: 1.6; }
-.footer-wordmark { position: absolute; bottom: -1.8rem; left: 50%; width: 100%; font-family: Montserrat, Arial, sans-serif; font-size: clamp(4.5rem, 7.5vw, 6.8rem); font-weight: 700; line-height: 1; text-align: center; white-space: nowrap; transform: translateX(-50%); }
+.footer-wordmark { position: absolute; bottom: -1.8rem; left: 50%; width: 100%; font-family: Montserrat, Arial, sans-serif; font-size: var(--wm-size); font-weight: 700; line-height: 1; text-align: center; white-space: nowrap; transform: translateX(-50%); }
 
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -1119,7 +1118,7 @@ body { overflow-x: hidden; }
 }
 
 /* ---- Form clarity: required marks, inline errors, send options ---- */
-.req { color: #c62828; font-style: normal; font-weight: 700; margin-left: .1rem; }
+.req { color: #c62828; font-style: normal; font-size: 1.2em; font-weight: 800; line-height: 1; margin-left: .15rem; }
 .optional { color: #5b6760; font-size: 0.75rem; font-weight: 600; letter-spacing: .04em; text-transform: none; }
 .required-note { margin: .6rem 0 0; font-size: 0.75rem; color: #3a4640; }
 .field > span { font-size: 0.75rem; }
@@ -1136,7 +1135,7 @@ body { overflow-x: hidden; }
   main { padding-bottom: 1rem; }
   .quote-form { margin-bottom: 4.5rem; }
   .contact-layout { padding-bottom: 3.5rem; }
-  .site-footer { padding-bottom: 5.5rem; }
+  .site-footer { padding-bottom: 9.75rem; }
   .section { margin-top: 3.75rem; }
 }
 .logo-loop__copy { display: contents; }
@@ -1160,11 +1159,13 @@ body[data-page="contact"] .floating-whatsapp { display: none; }
 .form-success strong { font-weight: 700; }
 .contact-card a, .footer-meta a { font-weight: 600; }
 
-/* Touch targets: at least 44px tall for small text links, chips and the menu button */
-.footer-links a, .footer-meta a, .contact-card a { display: inline-flex; align-items: center; min-height: 44px; }
-.footer-links { gap: 0; }
+/* Touch targets: at least 44px tall for chips and the menu button everywhere; footer and contact links on phones and touch screens */
 .filter, .menu-toggle { min-height: 44px; }
-.footer-meta p a { padding-block: .5rem; }
+@media (max-width: 760px), (pointer: coarse) {
+  .footer-links a, .footer-meta a, .contact-card a { display: inline-flex; align-items: center; min-height: 44px; }
+  .footer-links { gap: 0; }
+  .footer-meta p a { padding-block: .5rem; }
+}
 .map-card > a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* Distance to office */
