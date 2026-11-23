@@ -11,7 +11,8 @@
       "Negeri Sembilan, Malaysia"
     ],
     "hours": "Open 9:00 am – 5:00 pm · Closed on Mondays",
-    "registrationLabel": "Registered Business No."
+    "registrationLabel": "Registered Business No.",
+    "coordinates": { "lat": 2.708, "lng": 101.9163 }
   },
   "navigation": [
     {
