@@ -16,7 +16,7 @@ This repository contains the website source. The working website is published wi
 
 GitHub Pages serves the static website from the root of the main branch. Changes to the HTML files and assets publish automatically after GitHub's Pages deployment completes.
 
-Shared content is in assets/site.json. Rendering and interactions are in assets/app.js, and the design styles are in assets/styles.css and assets/hero-v6.css. Keep matching files under public/assets in sync for the separate framework version.
+Shared content is in assets/site.json. Rendering and interactions are in assets/app.js, and the design styles are in assets/styles.css and assets/hero-v6.css.
 
 ## Local preview
 
@@ -27,5 +27,3 @@ node server.js
 ```
 
 Then open http://127.0.0.1:4173/. No package installation is required for this static preview.
-
-The optional framework development server uses npm ci followed by npm run dev.
