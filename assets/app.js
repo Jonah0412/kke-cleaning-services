@@ -141,7 +141,7 @@ function homePage() {
     <main id="main" tabindex="-1">
       <div class="video-hero-shell">
         <section class="home-hero home-hero--video reveal">
-          <img class="video-hero__background video-hero__background--motion" src="/assets/images/home-hero-cleaning-v2.png" alt="" aria-hidden="true" />
+          <img class="video-hero__background video-hero__background--motion" src="/assets/images/home-hero-cleaning-v2.jpg" alt="" aria-hidden="true" />
           <div class="video-hero__veil" aria-hidden="true"></div>
           <div class="video-hero__content">
             <div class="video-hero__copy">
@@ -184,12 +184,12 @@ function homePage() {
             <img data-service-image src="${data.services[1].image}" alt="Factory cleaning" />
           </article>
           <article class="mini-card"><p class="eyebrow">WORKFORCE</p><h3>Scalable teams for complex sites.</h3><p>Site supervision and operational support for projects of every size.</p></article>
-          <article class="mini-card"><p class="eyebrow">QUALITY PROOF</p><h3>Before / after transformation.</h3><div class="mini-proof"><img src="/assets/images/office-before-generated.png" alt="Office before cleaning"><img src="/assets/images/project-office.png" alt="Office after cleaning"></div></article>
+          <article class="mini-card"><p class="eyebrow">QUALITY PROOF</p><h3>Before / after transformation.</h3><div class="mini-proof"><img src="/assets/images/office-before-generated.jpg" alt="Office before cleaning"><img src="/assets/images/project-office.jpg" alt="Office after cleaning"></div></article>
         </div>
       </section>
       ${logoLoop()}
       <section class="proof-banner section container reveal">
-        ${comparison({ before: '/assets/images/office-before-generated.png', after: '/assets/images/project-office.png', className: 'comparison--banner' })}
+        ${comparison({ before: '/assets/images/office-before-generated.jpg', after: '/assets/images/project-office.jpg', className: 'comparison--banner' })}
         <div class="proof-banner__content"><h2>From occupied to ready.</h2><p>See KKE’s cleaning proof, then request a site-specific quotation.</p>${button('View work', '/work/')}</div>
       </section>
     </main>`;
@@ -201,7 +201,7 @@ function workPage() {
     <main id="main" tabindex="-1">
       ${pageIntro('SELECTED WORK / PROOF', 'Proof that scales<br />with the site.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
       <section class="container reveal">
-        ${comparison({ before: '/assets/images/factory-before-generated.png', after: '/assets/images/proof-after.png', beforeLabel: 'BEFORE / ACTIVE SITE', afterLabel: 'AFTER / SERVICE COMPLETE', className: 'comparison--hero' })}
+        ${comparison({ before: '/assets/images/factory-before-generated.jpg', after: '/assets/images/factory.jpg', beforeLabel: 'BEFORE / ACTIVE SITE', afterLabel: 'AFTER / SERVICE COMPLETE', className: 'comparison--hero' })}
         <div class="proof-caption"><h3>Industrial facility cleaning</h3><p>Production floor / Negeri Sembilan · Recurring service contract</p></div>
       </section>
       ${logoLoop()}
@@ -246,7 +246,7 @@ function servicesPage() {
       </section>
       <section class="service-proof section container">
         <div class="section-heading"><p class="eyebrow">HANDOVER PROOF</p><h2>Drag to compare the finish.</h2></div>
-        ${comparison({ before: '/assets/images/reno-before-generated.png', after: '/assets/images/project-renovation.png', beforeLabel: 'BEFORE / RENOVATION RESIDUE', afterLabel: 'AFTER / READY FOR HANDOVER', className: 'comparison--wide' })}
+        ${comparison({ before: '/assets/images/reno-before-generated.jpg', after: '/assets/images/project-renovation.jpg', beforeLabel: 'BEFORE / RENOVATION RESIDUE', afterLabel: 'AFTER / READY FOR HANDOVER', className: 'comparison--wide' })}
       </section>
       <section class="process section container">
         <p class="eyebrow">HOW IT WORKS</p>
@@ -265,7 +265,7 @@ function aboutPage() {
     <main id="main" tabindex="-1">
       <section class="about-hero container">
         <div class="about-hero__copy reveal"><p class="eyebrow">ABOUT KKE / SEREMBAN</p><h1>Built in Seremban.<br />Trusted since 2007.</h1><p>From Vision Cleaning Services to KKE: a professional operation built on reliability, quality workmanship and long-term client relationships.</p>${button('Meet the operation', '#operation')}</div>
-        <img class="reveal" src="/assets/images/about-team.png" alt="KKE cleaning team at work" />
+        <img class="reveal" src="/assets/images/about-team.jpg" alt="KKE cleaning team at work" />
       </section>
       <section class="container metrics-section">${metrics(aboutMetrics)}</section>
       <section class="timeline-section section container" id="operation">
