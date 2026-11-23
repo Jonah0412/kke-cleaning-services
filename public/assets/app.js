@@ -31,6 +31,7 @@ function header() {
     return `<a class="nav-link ${target === page ? 'is-active' : ''}" href="${item.href}" style="--nav-order:${index}" ${target === page ? 'aria-current="page"' : ''}><span class="nav-link__index">0${index + 1}</span><span>${item.label}</span></a>`;
   }).join('');
   return `
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header" data-header>
       <a class="brand" href="/" aria-label="KKE Cleaning Services home">
         <img src="/assets/images/kke-logo.png" alt="KKE Cleaning Services" />
@@ -138,7 +139,7 @@ function pageIntro(eyebrow, title, copy) {
 
 function homePage() {
   return `
-    <main>
+    <main id="main" tabindex="-1">
       <div class="video-hero-shell">
         <section class="home-hero home-hero--video reveal">
           <img class="video-hero__background video-hero__background--motion" src="/assets/images/home-hero-cleaning-v2.png" alt="" aria-hidden="true" />
@@ -198,7 +199,7 @@ function homePage() {
 function workPage() {
   const filters = ['All', 'Industrial', 'Office', 'Healthcare', 'Post-renovation'];
   return `
-    <main>
+    <main id="main" tabindex="-1">
       ${pageIntro('SELECTED WORK / PROOF', 'Proof that scales<br />with the site.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
       <section class="container reveal">
         ${comparison({ before: '/assets/images/factory-before-generated.png', after: '/assets/images/proof-after.png', beforeLabel: 'BEFORE / ACTIVE SITE', afterLabel: 'AFTER / SERVICE COMPLETE', className: 'comparison--hero' })}
@@ -229,7 +230,7 @@ function workPage() {
 
 function servicesPage() {
   return `
-    <main>
+    <main id="main" tabindex="-1">
       ${pageIntro('SERVICE SYSTEMS / 01—05', 'The right cleaning system<br />for every environment.', 'From daily maintenance to specialist handovers, every scope is shaped around the way your site operates.')}
       <section class="service-index container">
         <div class="service-index__nav reveal">
@@ -262,7 +263,7 @@ function aboutPage() {
     { value: '5', label: 'Operational drivers' }, { value: '7', label: 'Industries served' }
   ];
   return `
-    <main>
+    <main id="main" tabindex="-1">
       <section class="about-hero container">
         <div class="about-hero__copy reveal"><p class="eyebrow">ABOUT KKE / SEREMBAN</p><h1>Built in Seremban.<br />Trusted since 2007.</h1><p>From Vision Cleaning Services to KKE: a professional operation built on reliability, quality workmanship and long-term client relationships.</p>${button('Meet the operation', '#operation')}</div>
         <img class="reveal" src="/assets/images/about-team.png" alt="KKE cleaning team at work" />
@@ -294,7 +295,7 @@ function field(label, placeholder, type = 'text', full = false, name = '', requi
 
 function contactPage() {
   return `
-    <main>
+    <main id="main" tabindex="-1">
       ${pageIntro('REQUEST A QUOTATION', 'Tell us about the site.<br />We will shape the scope.', 'A guided quotation flow for corporate sites, factories, renovation handovers and homes.')}
       <section class="contact-layout container">
         <form class="quote-form reveal" data-quote-form novalidate>
