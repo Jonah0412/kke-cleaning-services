@@ -72,6 +72,7 @@ function logoLoop() {
       <div class="logo-loop__viewport">
         <div class="logo-loop__track">${sequence}<span class="logo-loop__copy" aria-hidden="true">${sequence}</span></div>
       </div>
+      <div class="logo-loop__controls"><button type="button" class="logo-loop__pause" data-logo-pause>Pause logos</button></div>
     </section>`;
 }
 
@@ -620,3 +621,12 @@ if (locateButton) {
     }, { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 });
   });
 }
+
+// Logo strip: a visible control to pause the moving client logos
+document.querySelectorAll('[data-logo-pause]').forEach((control) => {
+  control.addEventListener('click', () => {
+    const loop = control.closest('.logo-loop');
+    const paused = loop.classList.toggle('is-paused');
+    control.textContent = paused ? 'Play logos' : 'Pause logos';
+  });
+});
