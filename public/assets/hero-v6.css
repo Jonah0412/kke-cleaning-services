@@ -1,11 +1,4 @@
 /* Full-screen cleaning hero. Kept framework-free to match this site's runtime. */
-@font-face {
-  font-family: "Helvetica Regular";
-  src: url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff2") format("woff2"),
-       url("https://db.onlinewebfonts.com/t/a64ff11d2c24584c767f6257e880dc65.woff") format("woff");
-  font-display: swap;
-}
-
 .video-hero-shell {
   width: 100%;
   min-height: 100svh;
