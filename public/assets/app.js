@@ -79,7 +79,6 @@ function footer() {
   const links = data.navigation.map((item) => `<a href="${item.href}">${item.label}</a>`).join('');
   return `
     <footer class="site-footer">
-      <div class="footer-accent"></div>
       <div class="footer-grid container">
         <div class="footer-intro">
           <h2>Ready when your site is.</h2>
