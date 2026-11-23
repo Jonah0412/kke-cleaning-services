@@ -1213,3 +1213,10 @@ main:focus { outline: none; }
   .proof-banner__content h2 { font-size: 1.5rem; }
   .proof-banner__content p { font-size: 0.875rem; }
 }
+
+/* Logo strip pause control */
+.logo-loop__controls { display: flex; justify-content: flex-end; margin-top: .5rem; }
+.logo-loop__pause { min-height: 44px; padding: .4rem 1rem; border: 1px solid var(--line); border-radius: 999px; color: var(--navy); background: transparent; font-size: 0.75rem; font-weight: 600; letter-spacing: .04em; cursor: pointer; }
+.logo-loop__pause:hover { border-color: var(--navy); }
+.logo-loop.is-paused .logo-loop__track { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) { .logo-loop__controls { display: none; } }
