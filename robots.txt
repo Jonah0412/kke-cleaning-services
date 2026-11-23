@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://jonah0412.github.io/kke-cleaning-services/sitemap.xml
