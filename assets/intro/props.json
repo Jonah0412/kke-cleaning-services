@@ -1,0 +1,11 @@
+[
+ {"src":"props/prop-1.webp","w":76,"h":75,"x":0.113,"v":0.367,"top":true},
+ {"src":"props/prop-2.webp","w":117,"h":119,"x":0.146,"v":0.375,"top":false},
+ {"src":"props/prop-4.webp","w":87,"h":98,"x":0.294,"v":0.399,"top":true},
+ {"src":"props/prop-3.webp","w":82,"h":76,"x":0.247,"v":0.235,"top":false},
+ {"src":"props/prop-6.webp","w":104,"h":94,"x":0.704,"v":0.329,"top":true},
+ {"src":"props/prop-5.webp","w":64,"h":66,"x":0.453,"v":0.313,"top":false},
+ {"src":"props/prop-8.webp","w":81,"h":71,"x":0.869,"v":0.464,"top":true},
+ {"src":"props/prop-7.webp","w":77,"h":60,"x":0.749,"v":0.324,"top":false},
+ {"src":"props/prop-9.webp","w":65,"h":65,"x":0.866,"v":0.425,"top":false}
+]

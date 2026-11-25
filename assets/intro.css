@@ -1,0 +1,37 @@
+/* KKE loading intro. Only active while <html> has .intro-on (set by the inline gate in index.html). */
+html.intro-on { overflow: hidden; background: #18a879; }
+html.intro-on body { overflow: hidden; height: 100%; background: #18a879; }
+/* The real homepage waits below the screen and slides up once the intro is done. */
+html.intro-on #app { position: relative; z-index: 10010; transform: translateY(100vh); }
+
+html.intro-on .skip-link { visibility: hidden; }
+
+.kke-intro { position: fixed; z-index: 10000; inset: 0; overflow: hidden; background: #18a879; contain: strict; }
+.kke-intro__props, .kke-intro__zoom { position: absolute; inset: 0; }
+.kke-intro__props { z-index: 1; }
+.kke-intro__zoom { z-index: 2; transform-origin: 50% 50%; will-change: transform; }
+
+.kke-intro__prop { position: absolute; left: 0; top: 0; display: block; max-width: none; user-select: none; -webkit-user-drag: none; will-change: transform, opacity; }
+
+/* White strip and logo are revealed together by one clip that follows the broom head. */
+.kke-intro__reveal { position: absolute; left: 0; width: 100%; background: #fff; will-change: clip-path; box-shadow: 0 6px 24px -10px rgba(5, 26, 33, .35); }
+.kke-intro__logo { position: absolute; left: 50%; top: 50%; display: block; max-width: none; transform: translate(-50%, -50%); user-select: none; -webkit-user-drag: none; }
+
+/* K-Bot is a sprite sheet (10 columns x 5 rows) stepped by the script, never a looping GIF. */
+.kke-intro__bot { position: absolute; z-index: 3; left: 0; background: url("./intro/kbot-sprite.webp") 0 0 / 1000% 500% no-repeat; will-change: transform; }
+
+.kke-intro__skip {
+  position: absolute; z-index: 4; right: max(1rem, env(safe-area-inset-right)); bottom: max(1rem, env(safe-area-inset-bottom));
+  min-width: 44px; min-height: 44px; padding: .6rem 1rem; border: 2px solid #fff; border-radius: 999px;
+  color: #fff; background: #0b2348; font: 700 .8125rem/1 "Open Sans", Arial, sans-serif; letter-spacing: .06em; text-transform: uppercase; cursor: pointer;
+}
+.kke-intro__skip:hover { background: #0f7556; }
+.kke-intro__skip:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+.kke-intro__status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  .kke-intro { display: none; }
+  html.intro-on { overflow: auto; }
+  html.intro-on body { overflow: auto; height: auto; }
+  html.intro-on #app { transform: none; z-index: auto; }
+}

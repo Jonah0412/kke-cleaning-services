@@ -28,13 +28,13 @@ function button(label, href = '/contact/', style = 'primary') {
 function header() {
   const links = data.navigation.map((item, index) => {
     const target = item.href === '/' ? 'home' : item.href.split('/')[1];
-    return `<a class="nav-link ${target === page ? 'is-active' : ''}" href="${item.href}" style="--nav-order:${index}" ${target === page ? 'aria-current="page"' : ''}><span class="nav-link__index">0${index + 1}</span><span>${item.label}</span></a>`;
+    return `<a class="nav-link ${target === page ? 'is-active' : ''}" href="${item.href}" style="--nav-order:${index}" ${target === page ? 'aria-current="page"' : ''}><span>${item.label}</span></a>`;
   }).join('');
   return `
     <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header" data-header>
       <a class="brand" href="/" aria-label="KKE Cleaning Services home">
-        <img src="/assets/images/kke-logo.png" alt="KKE Cleaning Services" />
+        <img src="/assets/images/kke-logo-hd.png" alt="KKE Cleaning Services" />
       </a>
       <nav class="desktop-nav" aria-label="Primary navigation">${links}</nav>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu">
@@ -43,7 +43,7 @@ function header() {
     </header>
     <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
       <div class="mobile-menu__top">
-        <img src="/assets/images/kke-logo.png" alt="" />
+        <img src="/assets/images/kke-logo-hd.png" alt="" />
         <button class="menu-close" type="button" aria-label="Close menu">×</button>
       </div>
       <nav aria-label="Mobile navigation">${links}</nav>
@@ -68,11 +68,9 @@ function logoLoop() {
   const sequence = data.clients.map(logoItem).join('');
   return `
     <section class="logo-loop section" aria-label="Selected KKE clients">
-      <p class="eyebrow logo-loop__label">TRUSTED ACROSS WORKING ENVIRONMENTS</p>
       <div class="logo-loop__viewport">
         <div class="logo-loop__track">${sequence}<span class="logo-loop__copy" aria-hidden="true">${sequence}</span></div>
       </div>
-      <div class="logo-loop__controls"><button type="button" class="logo-loop__pause" data-logo-pause>Pause logos</button></div>
     </section>`;
 }
 
@@ -92,9 +90,9 @@ function footer() {
         </div>
       </div>
       <div class="footer-meta container">
-        <p>SEREMBAN — NEGERI SEMBILAN<br />MALAYSIA</p>
-        <p><a href="mailto:${data.company.email}">${data.company.email}</a><br /><a href="tel:${data.company.phoneHref}">${data.company.phone}</a></p>
-        <p>©2026 KKE<br />${data.company.registrationLabel}: ${data.company.registration}</p>
+        <p>SEREMBAN — NEGERI SEMBILAN MALAYSIA</p>
+        <p><a href="mailto:${data.company.email}">${data.company.email}</a> <a href="tel:${data.company.phoneHref}">${data.company.phone}</a></p>
+        <p>©2026 KKE ${data.company.registrationLabel}: ${data.company.registration}</p>
       </div>
       <div class="footer-wordmark" aria-hidden="true">KKE CLEANING SERVICES</div>
     </footer>`;
@@ -108,7 +106,7 @@ function floatingWhatsapp() {
 }
 
 function metrics(custom = data.metrics) {
-  return `<div class="metrics">${custom.map((item) => {
+  return `<div class="metrics" style="--count:${custom.length}">${custom.map((item) => {
     const numericValue = Number.parseInt(item.value, 10);
     const suffix = String(item.value).includes('+') ? '+' : '';
     const valueMarkup = numericValue < 1000
@@ -133,7 +131,7 @@ function comparison({ before, after, beforeLabel = 'BEFORE', afterLabel = 'AFTER
 
 function pageIntro(eyebrow, title, copy) {
   return `<section class="page-intro container reveal">
-    <div><p class="eyebrow">${eyebrow}</p><h1>${title}</h1></div>
+    <div><h1>${title}</h1></div>
     <p class="page-intro__copy">${copy}</p>
   </section>`;
 }
@@ -147,8 +145,7 @@ function homePage() {
           <div class="video-hero__veil" aria-hidden="true"></div>
           <div class="video-hero__content">
             <div class="video-hero__copy">
-              <div class="video-hero__badge"><span aria-hidden="true"></span>Professional cleaning in Seremban</div>
-              <h1>Professional cleaning.<br />Done properly.</h1>
+              <h1>Professional cleaning. Done properly.</h1>
               <p>Cleaning for offices, factories, renovation sites and homes in Seremban and across Negeri Sembilan. Since 2007, with a team of up to 35 cleaners.</p>
             </div>
             <article class="video-hero__stat">
@@ -166,31 +163,27 @@ function homePage() {
       <section class="container metrics-section">${metrics()}</section>
       <section class="services-preview section container">
         <div class="section-heading reveal">
-          <p class="eyebrow">SERVICES / 01—05</p>
-          <h2>Five cleaning services for<br />offices, factories and homes.</h2>
+          <h2>Five cleaning services for offices, factories and homes.</h2>
         </div>
         <div class="service-browser reveal" data-service-browser>
           <div class="service-browser__tabs">
-            <p class="eyebrow">SELECT A SERVICE</p>
             ${data.services.map((service, index) => `<button type="button" data-service-index="${index}" class="service-tab ${index === 1 ? 'is-active' : ''}"><span>${service.number}</span>${service.name}</button>`).join('')}
           </div>
           <article class="service-feature">
             <div class="service-feature__copy">
-              <p class="eyebrow" data-service-type>${data.services[1].type}</p>
-              <span class="service-number" data-service-number>${data.services[1].number}</span>
               <h3 data-service-title>${data.services[1].title}</h3>
               <p data-service-copy>${data.services[1].description}</p>
               ${button('View services', '/services/', 'secondary')}
             </div>
             <img data-service-image src="${data.services[1].image}" alt="Factory cleaning" />
           </article>
-          <article class="mini-card"><p class="eyebrow">WORKFORCE</p><h3>Up to 35 cleaners, with site supervision.</h3><p>Site supervision and operational support for projects of every size.</p></article>
+          <article class="mini-card"><h3>Up to 35 cleaners, with site supervision.</h3><p>Site supervision and operational support for projects of every size.</p></article>
         </div>
       </section>
       ${logoLoop()}
       <section class="proof-banner section container reveal">
         ${comparison({ before: '/assets/images/office-before-generated.jpg', after: '/assets/images/project-office.jpg', className: 'comparison--banner' })}
-        <div class="proof-banner__content"><h2>Before and after.</h2><p>Drag to compare, then ask for a quotation for your site.</p>${button('View work', '/work/')}</div>
+        <div class="proof-banner__content"><div><h2>Before and after.</h2><p>Drag to compare, then ask for a quotation for your site.</p></div>${button('View work', '/work/')}</div>
       </section>
     </main>`;
 }
@@ -199,27 +192,25 @@ function workPage() {
   const filters = ['All', 'Industrial', 'Office', 'Healthcare', 'Post-renovation'];
   return `
     <main id="main" tabindex="-1">
-      ${pageIntro('SELECTED WORK / PROOF', 'Factory, office, clinic and<br />renovation cleaning projects.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
+      ${pageIntro('SELECTED WORK / PROOF', 'Factory, office, clinic and renovation cleaning projects.', 'Selected cleaning work across industrial, corporate, healthcare, property and institutional environments.')}
       <section class="container reveal">
-        ${comparison({ before: '/assets/images/factory-before-generated.jpg', after: '/assets/images/factory.jpg', beforeLabel: 'BEFORE / ACTIVE SITE', afterLabel: 'AFTER / SERVICE COMPLETE', className: 'comparison--hero' })}
-        <div class="proof-caption"><h3 role="heading" aria-level="2">Industrial facility cleaning</h3><p>Illustrative before and after. Not a photograph of a specific KKE job.</p></div>
+        ${comparison({ before: '/assets/images/factory-before-generated.jpg', after: '/assets/images/factory.jpg', className: 'comparison--hero' })}
       </section>
       <section class="industries section container">
-        <div class="section-heading reveal"><p class="eyebrow">INDUSTRIES / 01—07</p><h2>Seven industries<br />KKE cleans for.</h2></div>
+        <div class="section-heading reveal"><h2>Seven industries KKE cleans for.</h2></div>
         <div class="industry-grid">${data.industries.map((industry) => `
-          <article class="industry-card reveal"><span>${industry.number}</span><h3>${industry.name}</h3><p>${industry.copy}</p></article>`).join('')}</div>
+          <article class="industry-card reveal"><h3>${industry.name}</h3><p>${industry.copy}</p></article>`).join('')}</div>
       </section>
       <section class="client-list section container">
-        <div class="section-heading reveal"><p class="eyebrow">SELECTED CLIENTS</p><h2>Selected clients.</h2></div>
+        <div class="section-heading reveal"><h2>Selected clients.</h2></div>
         <div class="client-groups">${data.clientGroups.map((group) => `<article class="client-group reveal"><h3>${group.sector}</h3><ul>${group.names.map((name) => `<li>${name}</li>`).join('')}</ul></article>`).join('')}</div>
       </section>
       <section class="work-grid section container">
-        <div class="section-heading"><p class="eyebrow">PROJECT INDEX</p><h2>Browse projects by environment.</h2></div>
+        <div class="section-heading"><h2>Browse projects by environment.</h2></div>
         <div class="filters" role="group" aria-label="Filter projects">${filters.map((filter, index) => `<button class="filter ${index === 0 ? 'is-active' : ''}" data-filter="${filter.toLowerCase()}">${filter}</button>`).join('')}</div>
         <div class="project-grid">${data.projects.map((project) => `
           <article class="project-card reveal" data-category="${project.tag.toLowerCase()}">
-            <div class="project-card__image"><img src="${project.image}" alt="${project.title}" loading="lazy" /><span>${project.tag}</span></div>
-            <div class="project-card__meta"><small>${project.number}</small><a href="/contact/" aria-label="Ask about ${project.title}">${arrow}</a></div>
+            <div class="project-card__image"><img src="${project.image}" alt="${project.title}" loading="lazy" /><a class="project-card__go" href="/contact/" aria-label="Ask about ${project.title}">${arrow}</a></div>
             <h3>${project.title}</h3><p>${project.description}</p>
           </article>`).join('')}</div>
       </section>
@@ -229,54 +220,52 @@ function workPage() {
 function servicesPage() {
   return `
     <main id="main" tabindex="-1">
-      ${pageIntro('SERVICE SYSTEMS / 01—05', 'Office, factory, renovation,<br />deep and house cleaning.', 'From daily maintenance to specialist handovers, every scope is shaped around the way your site operates.')}
+      ${pageIntro('SERVICE SYSTEMS / 01—05', 'Office, factory, renovation, deep and house cleaning.', 'From daily maintenance to specialist handovers, every scope is shaped around the way your site operates.')}
       <section class="service-index container">
         <div class="service-index__nav reveal">
-          <p class="eyebrow">SERVICE INDEX</p>
           ${data.services.map((service, index) => `<a href="#service-${service.id}" class="${index === 0 ? 'is-active' : ''}" data-service-anchor="${service.id}">${service.short}</a>`).join('')}
           <p>Select a service to see its scope and environment.</p>
         </div>
         <div class="service-stack" data-scroll-stack>${data.services.map((service, index) => `
           <article class="service-card reveal" id="service-${service.id}" style="--stack-index:${index};--stack-offset:${index * 10}px">
-            <div class="service-card__top"><span>${service.number}</span><p class="eyebrow">${service.type}</p></div>
             <div class="service-card__copy"><h2>${service.name}</h2><p>${service.description}</p><ul class="service-scope">${service.scope.map((item) => `<li>${item}</li>`).join('')}</ul>${button('Request ' + service.name.toLowerCase() + ' quote', '/contact/', 'secondary')}</div>
             <img src="${service.image}" alt="${service.name}" loading="lazy" />
           </article>`).join('')}</div>
       </section>
       <section class="service-proof section container">
-        <div class="section-heading"><p class="eyebrow">HANDOVER PROOF</p><h2>Post-renovation cleaning: before and after.</h2></div>
-        ${comparison({ before: '/assets/images/reno-before-generated.jpg', after: '/assets/images/project-renovation.jpg', beforeLabel: 'BEFORE / RENOVATION RESIDUE', afterLabel: 'AFTER / READY FOR HANDOVER', className: 'comparison--wide' })}
+        <div class="section-heading"><h2>Post-renovation cleaning: before and after.</h2></div>
+        ${comparison({ before: '/assets/images/reno-before-generated.jpg', after: '/assets/images/project-renovation.jpg', className: 'comparison--wide' })}
       </section>
       <section class="process section container">
-        <p class="eyebrow">HOW IT WORKS</p>
+        <div class="section-heading"><h2>How a quotation works.</h2></div>
         <div class="process-grid">${data.process.map((step, index) => `<div class="process-step reveal"><span>0${index + 1}</span><h3>${step}</h3><p>${(data.processDetail || [])[index] || ''}</p></div>`).join('')}</div>
-        <div class="process-cta reveal"><div><p class="eyebrow">NEED HELP CHOOSING?</p><h2>Not sure which service fits?</h2><p>Send the site details and KKE will guide the scope.</p></div>${button('Start a quote')}</div>
+        <div class="process-cta reveal"><div><h2>Not sure which service fits?</h2><p>Send the site details and KKE will guide the scope.</p></div>${button('Start a quote')}</div>
       </section>
     </main>`;
 }
 
 function aboutPage() {
   const aboutMetrics = [
-    { value: '2007', label: 'Established' }, { value: '35', label: 'Cleaning personnel' },
+    { value: '2007', label: 'Established' }, { value: '35', label: 'Cleaners, up to' },
     { value: '5', label: 'Operational drivers' }, { value: '7', label: 'Industries served' }
   ];
   return `
     <main id="main" tabindex="-1">
       <section class="about-hero container">
-        <div class="about-hero__copy reveal"><p class="eyebrow">ABOUT KKE / SEREMBAN</p><h1>Built in Seremban.<br />Trusted since 2007.</h1><p>From Vision Cleaning Services to KKE: a professional operation built on reliability, quality workmanship and long-term client relationships.</p>${button('Meet the operation', '#operation')}</div>
+        <div class="about-hero__copy reveal"><h1>Built in Seremban. Trusted since 2007.</h1><p>From Vision Cleaning Services to KKE: a professional operation built on reliability, quality workmanship and long-term client relationships.</p>${button('Meet the operation', '#operation')}</div>
         <img class="reveal" src="/assets/images/about-team.jpg" alt="KKE cleaning team at work" />
       </section>
       <section class="container metrics-section">${metrics(aboutMetrics)}</section>
       <section class="timeline-section section container" id="operation">
-        <div class="section-heading"><p class="eyebrow">OUR JOURNEY</p><h2>From Vision Cleaning Services<br />to KKE.</h2></div>
+        <div class="section-heading"><h2>From Vision Cleaning Services to KKE.</h2></div>
         <div class="timeline">${data.timeline.map((item) => `<article class="timeline-item reveal"><span>${item.period}</span><div><h3>${item.title}</h3><p>${item.copy}</p></div></article>`).join('')}</div>
       </section>
       <section class="director section container reveal">
         <div class="director__portrait"><img src="/assets/images/director.svg" alt="Portrait illustration of Mr. Kenny Loh" /></div>
-        <div class="director__copy"><p class="eyebrow">OPERATIONS LEADERSHIP</p><h2>Mr. Kenny Loh</h2><h3>Operations Director</h3><p>Operational planning, workforce coordination, quality assurance and client relationship management.</p></div>
-        <div class="director__stat"><span>ORGANISATION</span><strong>A scalable team for projects of varying size.</strong><p>Cleaners, drivers, supervisors and admin support</p></div>
+        <div class="director__copy"><h2>Mr. Kenny Loh</h2><h3>Operations Director</h3><p>Operational planning, workforce coordination, quality assurance and client relationship management.</p></div>
+        <div class="director__stat"><strong>A scalable team for projects of varying size.</strong><p>Cleaners, drivers, supervisors and admin support</p></div>
       </section>
-      <section class="values section container">${data.values.map((value) => `<article class="value-card reveal"><p class="eyebrow">${value.label}</p><h3>${value.copy}</h3></article>`).join('')}</section>
+      <section class="values section container">${data.values.map((value) => `<article class="value-card reveal"><p class="value-label">${value.label}</p><h3>${value.copy}</h3></article>`).join('')}</section>
     </main>`;
 }
 
@@ -293,10 +282,11 @@ function field(label, placeholder, type = 'text', full = false, name = '', requi
 function contactPage() {
   return `
     <main id="main" tabindex="-1">
-      ${pageIntro('REQUEST A QUOTATION', 'Request a cleaning quotation<br />in three steps.', 'A guided quotation flow for corporate sites, factories, renovation handovers and homes.')}
+      ${pageIntro('REQUEST A QUOTATION', 'Request a cleaning quotation in three steps.', 'A guided quotation flow for corporate sites, factories, renovation handovers and homes.')}
       <section class="contact-layout container">
+        <div class="contact-main">
         <form class="quote-form reveal" data-quote-form novalidate>
-          <div class="form-heading"><p class="eyebrow">START HERE</p><h2>Request a site quotation</h2><p>Complete the three steps. KKE will review the details and contact you directly. Pricing depends on the size and scope of your site.</p><p class="required-note"><em class="req" aria-hidden="true">*</em> Required field</p></div>
+          <div class="form-heading"><h2>Request a site quotation</h2><p>Complete the three steps. KKE will review the details and contact you directly. Pricing depends on the size and scope of your site.</p><p class="required-note"><em class="req" aria-hidden="true">*</em> Required field</p></div>
           <ol class="form-steps"><li class="is-active" data-form-indicator="0"><b>1</b><span>Site</span></li><li data-form-indicator="1"><b>2</b><span>Schedule</span></li><li data-form-indicator="2"><b>3</b><span>Contact</span></li></ol>
           <div class="form-progress" aria-hidden="true"><span data-form-progress></span></div>
           <section class="form-panel" data-form-step="0">
@@ -327,14 +317,15 @@ function contactPage() {
           </section>
           <div class="form-success" role="status" hidden><strong>Your quotation request is ready to send.</strong><p>Choose how to send it to KKE. Nothing is sent until you do.</p><div class="form-success__actions"><a class="button button--primary" data-send-whatsapp target="_blank" rel="noreferrer"><span>Send via WhatsApp</span></a><a class="button button--secondary" data-send-email><span>Send via email</span></a></div><pre class="form-summary" data-form-summary></pre></div>
         </form>
+          <article class="map-card reveal"><iframe class="map-embed" title="Map showing KKE Cleaning Services in Seremban" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(data.company.address.join(', '))}&output=embed"></iframe><p class="office-label">KKE OFFICE</p><h3>${data.company.address[0]}</h3><p>${data.company.address.slice(1).join(' ')}</p><div class="distance-tool"><button type="button" class="distance-btn" data-locate>Use my location</button><p class="distance-result" data-distance-result role="status" aria-live="polite">Optional. Your location stays in your browser and is not sent anywhere.</p></div><a href="https://maps.google.com/?q=${encodeURIComponent(data.company.address.join(', '))}" target="_blank" rel="noreferrer">Open in Google Maps ${arrow}</a></article>
+        </div>
         <aside class="contact-aside">
-          <article class="contact-card contact-card--dark reveal"><p class="eyebrow">DIRECT CONTACT</p><h2>Prefer a quick conversation?</h2><a href="tel:${data.company.phoneHref}">${data.company.phone}</a><a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer">Chat on WhatsApp</a><a href="mailto:${data.company.email}">${data.company.email}</a><p class="contact-hours">${data.company.hours}</p></article>
-          <article class="map-card reveal"><iframe class="map-embed" title="Map showing KKE Cleaning Services in Seremban" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=${encodeURIComponent(data.company.address.join(', '))}&output=embed"></iframe><p class="eyebrow">KKE OFFICE</p><h3>${data.company.address[0]}</h3><p>${data.company.address.slice(1).join('<br />')}</p><div class="distance-tool"><button type="button" class="distance-btn" data-locate>Use my location</button><p class="distance-result" data-distance-result role="status" aria-live="polite">Optional. Your location stays in your browser and is not sent anywhere.</p></div><a href="https://maps.google.com/?q=${encodeURIComponent(data.company.address.join(', '))}" target="_blank" rel="noreferrer">Open in Google Maps ${arrow}</a></article>
-          <article class="coverage-card reveal"><p class="eyebrow">SERVICE COVERAGE</p><h2>Negeri Sembilan +<br />surrounding areas.</h2><p>Corporate contracts, recurring maintenance and project cleaning.</p></article>
+          <article class="contact-card contact-card--dark reveal"><h2>Prefer a quick conversation?</h2><a href="tel:${data.company.phoneHref}">${data.company.phone}</a><a href="https://wa.me/${data.company.phoneHref.replace('+', '')}" target="_blank" rel="noreferrer">Chat on WhatsApp</a><a href="mailto:${data.company.email}">${data.company.email}</a><p class="contact-hours">${data.company.hours}</p></article>
+        <article class="coverage-card reveal"><h2>Negeri Sembilan + surrounding areas.</h2><p>Corporate contracts, recurring maintenance and project cleaning.</p></article>
         </aside>
       </section>
       <section class="faq section container">
-        <div class="section-heading"><p class="eyebrow">QUOTATION FAQ</p><h2>Common quotation questions.</h2></div>
+        <div class="section-heading"><h2>Common quotation questions.</h2></div>
         <div class="faq-list">${data.faqs.map((item) => `<details class="reveal"><summary>${item.q}<span>+</span></summary><p>${item.a}</p></details>`).join('')}</div>
       </section>
     </main>`;
@@ -404,8 +395,6 @@ serviceBrowser?.querySelectorAll('[data-service-index]').forEach((tab) => {
     tab.classList.add('is-active');
     feature.classList.add('is-changing');
     window.setTimeout(() => {
-      serviceBrowser.querySelector('[data-service-type]').textContent = service.type;
-      serviceBrowser.querySelector('[data-service-number]').textContent = service.number;
       serviceBrowser.querySelector('[data-service-title]').textContent = service.title;
       serviceBrowser.querySelector('[data-service-copy]').textContent = service.description;
       const image = serviceBrowser.querySelector('[data-service-image]');
@@ -426,6 +415,17 @@ if (serviceAnchors.length && serviceCards.length) {
     serviceAnchors.forEach((anchor) => anchor.classList.toggle('is-active', anchor.dataset.serviceAnchor === id));
   }, { rootMargin: '-22% 0px -58% 0px', threshold: [0.1, 0.35, 0.7] });
   serviceCards.forEach((card) => serviceObserver.observe(card));
+  serviceAnchors.forEach((anchor) => anchor.addEventListener('click', (event) => {
+    const card = document.getElementById(`service-${anchor.dataset.serviceAnchor}`);
+    if (!card) return;
+    event.preventDefault();
+    const header = document.querySelector('.site-header');
+    const offset = (header ? header.getBoundingClientRect().bottom : 100) + 16;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: card.getBoundingClientRect().top + window.scrollY - offset, behavior: reduce ? 'auto' : 'smooth' });
+    serviceAnchors.forEach((item) => item.classList.toggle('is-active', item === anchor));
+    history.replaceState(null, '', `#service-${anchor.dataset.serviceAnchor}`);
+  }));
 }
 
 document.querySelectorAll('[data-filter]').forEach((filter) => {
@@ -515,13 +515,14 @@ if (quoteForm) {
     if (!stepIsValid()) return;
     const values = Object.fromEntries(new FormData(quoteForm).entries());
     const serviceName = data.services.find((service) => service.id === values.service)?.name || values.service;
+    const cap = (text = '') => text.charAt(0).toUpperCase() + text.slice(1);
     const lines = [
       'Quotation request for KKE Cleaning Services',
       `Service: ${serviceName}`,
-      `Site type: ${values['site-type']}`,
+      `Site type: ${cap(values['site-type'])}`,
       values['site-size'] ? `Site size / rooms: ${values['site-size']}` : '',
       `Location: ${values.location}`,
-      `Preferred schedule: ${values.schedule}`,
+      `Preferred schedule: ${cap(values.schedule)}`,
       values['start-date'] ? `Target start date: ${values['start-date']}` : '',
       values.notes ? `Notes: ${values.notes}` : '',
       `Name / company: ${values.name}`,
@@ -622,11 +623,3 @@ if (locateButton) {
   });
 }
 
-// Logo strip: a visible control to pause the moving client logos
-document.querySelectorAll('[data-logo-pause]').forEach((control) => {
-  control.addEventListener('click', () => {
-    const loop = control.closest('.logo-loop');
-    const paused = loop.classList.toggle('is-paused');
-    control.textContent = paused ? 'Play logos' : 'Pause logos';
-  });
-});

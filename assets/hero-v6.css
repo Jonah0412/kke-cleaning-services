@@ -288,3 +288,10 @@ body[data-page="home"] .floating-whatsapp { display: none; }
   .video-hero__corner { animation: none; }
   .video-hero__background { animation: none; }
 }
+
+/* ===== Phone sizes, final say (this file loads last) ===== */
+@media (max-width: 760px) {
+  html body .about-hero__copy p, html body .form-heading p, html body .required-note, html body .contact-card p, html body .coverage-card p, html body .timeline-item p, html body .timeline-item span { font-size: 14px; line-height: 1.55; }
+  html body .video-hero__corner-copy small, html body .process-step span, html body .video-hero__stat span, html body .video-hero__stat small { font-size: 13px; }
+}
+html body .video-hero__stat span, html body .video-hero__stat div > span { font-size: 13px; }

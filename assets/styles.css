@@ -72,8 +72,8 @@ p { line-height: 1.55; }
   transition: height .25s ease, transform .3s ease, top .25s ease;
 }
 .site-header.is-condensed { top: 12px; height: 68px; border-radius: 10px; }
-.brand { flex: 0 0 86px; height: 52px; display: grid; place-items: center; }
-.brand img { width: 86px; height: 52px; object-fit: contain; }
+.brand { flex: 0 0 132px; height: 58px; display: grid; place-items: center; }
+.brand img { width: 132px; height: 58px; object-fit: contain; }
 .desktop-nav { flex: 1; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
 .nav-link { position: relative; padding: .75rem 0; font-size: 0.75rem; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; }
 .nav-link::after { content: ""; position: absolute; left: 0; right: 100%; bottom: .35rem; height: 2px; background: var(--green); transition: right .2s ease; }
@@ -331,8 +331,8 @@ p { line-height: 1.55; }
     border-radius: 0 0 8px 8px;
     transform: translateX(-50%);
   }
-  .brand { flex-basis: 72px; height: 48px; }
-  .brand img { width: 72px; height: 48px; }
+  .brand { flex-basis: 104px; height: 46px; }
+  .brand img { width: 104px; height: 46px; }
   .desktop-nav { display: none; }
   .menu-toggle { display: flex; align-items: center; gap: .45rem; padding: .6rem 0; border: 0; background: transparent; cursor: pointer; color: var(--ink); font-size: 0.75rem; font-weight: 600; letter-spacing: .06em; }
   .menu-symbol { color: var(--green-dark); font-size: 1rem; }
@@ -494,8 +494,8 @@ body { overflow-x: hidden; }
   box-shadow: 0 20px 50px -30px rgba(5, 27, 56, .42);
 }
 .site-header.is-condensed { top: 10px; height: 64px; }
-.brand { flex-basis: 98px; height: 54px; }
-.brand img { width: 94px; height: 54px; }
+.brand { flex-basis: 140px; height: 56px; }
+.brand img { width: 136px; height: 56px; }
 .desktop-nav { justify-content: flex-end; gap: .35rem; }
 .nav-link {
   display: inline-flex;
@@ -999,8 +999,8 @@ body { overflow-x: hidden; }
     border-radius: 16px;
     transform: translateX(-50%);
   }
-  .brand { flex-basis: 80px; height: 48px; }
-  .brand img { width: 78px; height: 48px; }
+  .brand { flex-basis: 108px; height: 46px; }
+  .brand img { width: 106px; height: 46px; }
   .menu-toggle { gap: .55rem; padding: .55rem; }
   .mobile-menu {
     z-index: 2000;
@@ -1220,3 +1220,171 @@ main:focus { outline: none; }
 .logo-loop__pause:hover { border-color: var(--navy); }
 .logo-loop.is-paused .logo-loop__track { animation-play-state: paused; }
 @media (prefers-reduced-motion: reduce) { .logo-loop__controls { display: none; } }
+
+/* Layout fixes after review */
+/* Section headings: eyebrow above the heading, both on the left. */
+.section-heading { display: block; }
+.section-heading .eyebrow { min-width: 0; margin: 0 0 .8rem; }
+
+/* Metrics share the width equally, however many there are. */
+.metrics { grid-template-columns: repeat(var(--count, 4), minmax(0, 1fr)); }
+@media (max-width: 760px) { .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Home: the workforce card fills the row under the service panel. */
+.service-browser > .mini-card { grid-column: 2 / -1; min-height: 0; }
+.service-browser > .mini-card h3, .service-browser > .mini-card > p:not(.eyebrow) { max-width: 36rem; }
+@media (max-width: 760px) { .service-browser > .mini-card { grid-column: auto; } }
+
+/* Before and after: the copy sits under the photo, never over the slider or its labels. */
+.proof-banner .comparison { border-radius: 24px 24px 0 0; }
+.proof-banner__content { position: static; top: auto; right: auto; bottom: auto; left: auto; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem 2rem; padding: 1.5rem 2rem; border-radius: 0 0 24px 24px; background: var(--navy-deep); transform: none; pointer-events: auto; }
+.proof-banner__content h2 { margin: 0 0 .35rem; font-size: clamp(1.5rem, 2.4vw, 2rem); }
+.proof-banner__content p { margin: 0; font-size: 0.9375rem; }
+@media (max-width: 760px) { .proof-banner__content { padding: 1.25rem 1.5rem 1.5rem; } }
+
+/* Selected clients: eight sectors fill two even rows of four. */
+.client-groups { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .client-groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 640px) { .client-groups { grid-template-columns: 1fr; } }
+
+/* Footer wordmark: show the whole word instead of cropping its bottom. */
+.footer-wordmark { bottom: 1rem; }
+
+/* Select: room for the arrow, and the placeholder reads as not chosen yet. */
+.field select { appearance: none; -webkit-appearance: none; padding-right: 2.75rem; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%230b2348' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M1 1.5l6 6 6-6'/></svg>"); background-repeat: no-repeat; background-position: right 1rem center; }
+.field select:invalid { color: #5b6760; }
+
+/* Small labels that remain are real titles, not decoration. */
+.value-label, .office-label { margin: 0 0 .4rem; color: var(--navy); font-size: .9375rem; font-weight: 700; }
+.project-card__meta { justify-content: flex-end; }
+
+/* Scrollable rows keep their swipe, without the grey scrollbar under them. */
+.filters, .service-browser__tabs, .mobile-scroll { scrollbar-width: none; -ms-overflow-style: none; }
+.filters::-webkit-scrollbar, .service-browser__tabs::-webkit-scrollbar { display: none; }
+
+/* Workforce card: full width by default, beside the tab column only on wide screens. */
+.service-browser > .mini-card { grid-column: 1 / -1; }
+@media (min-width: 1101px) { .service-browser > .mini-card { grid-column: 2 / -1; } }
+
+/* An odd last metric spans the row on phones instead of leaving an empty box. */
+@media (max-width: 760px) {
+  .metric:last-child:nth-child(odd) { grid-column: 1 / -1; border-right: 0; border-top: 1px solid var(--line); padding-top: .9rem; }
+}
+
+/* Before/after labels stay short and never collide on narrow photos. */
+.comparison__label { max-width: 44%; white-space: nowrap; }
+@media (max-width: 760px) { .comparison__label { padding: .45rem .8rem; font-size: .6875rem; } }
+
+/* Phone header: logo sits fully inside the pill. */
+@media (max-width: 760px) {
+  .brand { flex-basis: 96px; height: 40px; }
+  .brand img { width: 94px; height: 40px; }
+}
+.service-index__nav, .service-browser__tabs { scrollbar-width: none !important; }
+.service-index__nav::-webkit-scrollbar { display: none; }
+.service-feature__copy { padding-left: 0; }
+.service-card__copy { padding-top: 0; }
+
+/* Service cards lost their number column, so the copy takes the first column. */
+.service-card { grid-template-columns: minmax(0, 1fr) 42%; }
+@media (max-width: 1120px) { .service-card { grid-template-columns: minmax(0, 1fr) 39%; } }
+@media (max-width: 900px) {
+  .service-card { grid-template-columns: minmax(0, 1fr); }
+  .service-card__copy { grid-column: 1; grid-row: 2; }
+}
+
+/* Project cards: the enquiry arrow sits on the photo corner, not on a row of its own. */
+.project-card__image { position: relative; }
+.project-card__go { position: absolute; right: .85rem; bottom: .85rem; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 10px; color: #fff; background: var(--navy); }
+.project-card__go:hover { background: var(--green-fill); }
+
+
+/* ===== Phone sizes (up to 760px wide) =====
+   Reading text 14px with 1.55 line height. Uppercase UI labels 13px. Every tap target at least 44 x 44px. */
+@media (max-width: 760px) {
+  p, li, .page-intro__copy, .service-card__copy p, .service-feature p:not(.eyebrow), .project-card p, .proof-caption p,
+  .mini-card > p:not(.eyebrow), .form-note, .required-note, .field small, .footer-intro p, .footer-meta p, .contact-card p, .coverage-card p, .map-card p {
+    font-size: 14px; line-height: 1.55;
+  }
+  .optional, .req-note { font-size: 13px; }
+  .metric span, .menu-toggle, .menu-toggle span, .video-hero__corner-copy small, .service-tab, .filter, .service-index__nav a,
+  .logo-loop__pause, .distance-btn, .floating-whatsapp__icon, .map-card a, .value-label, .office-label { font-size: 13px; }
+  .comparison__label { font-size: 12px; }
+  .comparison__note { font-size: 12px; }
+  .footer-links a, .footer-meta a, .site-footer a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; font-size: 14px; }
+  .brand { height: 44px; flex-basis: 100px; }
+  .brand img { width: 100px; height: 44px; }
+  .logo-loop__pause, .distance-btn, .filter, .service-tab { min-height: 44px; }
+}
+@media (max-width: 760px) {
+  main .about-hero__copy p, main .service-scope li, main .form-heading p, main .required-note, main .quote-form p { font-size: 14px; line-height: 1.55; }
+  main .button span, main .button--primary span, main .button--secondary span, .video-hero__corner-copy span, .video-hero__stat span, .site-footer .button span { font-size: 13px; }
+  .video-hero__stat span, .video-hero__stat small { font-size: 13px; }
+  .field > span { font-size: 13px; }
+}
+@media (max-width: 760px) {
+  html body main .about-hero__copy > p, html body main .form-heading > p, html body main .form-heading .required-note,
+  html body main .timeline-item p, html body main .quote-form .form-heading p { font-size: 14px; line-height: 1.55; }
+  html body main .timeline-item span, html body main .process-step > span { font-size: 13px; }
+}
+@media (max-width: 760px) {
+  .about-hero__copy p, .faq details p, .faq-list p, .form-heading p { font-size: 14px !important; line-height: 1.55; }
+  .director__stat span, .director__stat small { font-size: 13px !important; }
+}
+
+/* ===== All screens: minimum sizes =====
+   Text you read: 14px. Uppercase labels and buttons: 13px. Nothing you tap is smaller than 44px tall. */
+.nav-link { min-height: 44px; display: inline-flex; align-items: center; }
+.nav-link span, .filter, .service-tab, .logo-loop__pause, .distance-btn, .optional, .map-card a, .required-note, .service-index__nav a { font-size: 13px !important; }
+.footer-intro p, .footer-meta p, .footer-meta a, .footer-links a, .service-scope li, .service-index__nav > p, .proof-caption p { font-size: 14px !important; line-height: 1.55; }
+.map-card a, .footer-meta a { min-height: 44px; display: inline-flex; align-items: center; }
+.button span, .video-hero__stat span, .video-hero__corner-copy small, .form-steps span { font-size: 13px !important; }
+.contact-card a { display: flex; align-items: center; min-height: 44px; }
+.footer-links a { padding-block: 4px; }
+@media (max-width: 1024px), (pointer: coarse) { .footer-links a, .site-footer a { min-height: 44px; display: inline-flex; align-items: center; } }
+@media (max-width: 1024px), (pointer: coarse) { .footer-links a, .site-footer a { min-width: 44px; } }
+.field > span, .field label span, .video-hero__stat div span, .floating-whatsapp span { font-size: 13px !important; }
+.metric span, .service-tab span, .process-step > span { font-size: 13px !important; }
+
+/* ===== Round of fixes: spacing, anchors, hover, contact balance ===== */
+/* Service tab panel is only as tall as its tabs: no empty navy space. */
+.service-browser__tabs { min-height: 0 !important; align-self: start; }
+.service-browser > .mini-card { padding: 1.5rem 1.75rem; }
+.mini-card > p:last-child { margin-bottom: 0; }
+.mini-card h3 { margin-bottom: .5rem; }
+
+/* Service cards sit in normal flow, so a click on OFFICE, FACTORY... lands on the right card. */
+.service-card { position: relative !important; top: auto !important; min-height: 0 !important; scroll-margin-top: 110px; }
+.service-stack { gap: 1.5rem; padding-bottom: 0; }
+
+/* Step cards stay readable on hover. */
+.process-step:hover p { color: rgba(255, 255, 255, .86); }
+.process-step:hover > span { color: var(--green-light); }
+
+/* Project title sits 16px under its photo. */
+.project-card h3 { margin: 1rem 0 .35rem; }
+
+/* Contact: form and coverage card stack in the left column, so it is as tall as the right column. */
+.contact-main { display: grid; gap: 1.25rem; min-width: 0; align-content: start; }
+.contact-aside { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 761px) and (max-width: 1100px) { .contact-aside { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .contact-aside { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1101px) {
+  .map-embed { height: 160px; margin-bottom: 1.25rem; }
+  .contact-card, .map-card { padding: 1.5rem 1.75rem; }
+  .contact-main { grid-template-rows: auto 1fr; }
+  .coverage-card { display: flex; flex-direction: column; justify-content: center; }
+}
+@media (min-width: 1101px) { .contact-layout { align-items: stretch; } .contact-main { align-content: stretch; } }
+
+/* Value cards: label and statement sit together, no tall empty gap. */
+.value-card { min-height: 0; padding: 1.75rem 2rem; }
+.value-card h3 { margin-top: .75rem; }
+.industry-card { min-height: 190px; }
+@media (min-width: 1101px) {
+  .contact-layout { align-items: start; }
+  .contact-main { grid-template-rows: none; }
+  .coverage-card { display: block; }
+  .contact-aside { position: sticky; top: 110px; }
+  .map-embed { height: 240px; }
+}
